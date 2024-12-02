@@ -1,0 +1,49 @@
+dialog {
+    background-color: white;
+    outline: none;
+    border-radius: 10px;
+    width: 60%;
+    height: 65%;
+    position: absolute;
+    top: 10%;
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+.background-blur {
+    background-color: rgba(0, 0, 0, 0.852);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+dialog h1 {
+    text-align: center;
+}
+dialog ol {
+    font-size: 14px;
+    overflow: auto;
+}
+dialog .buttons-container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+dialog button:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    color: black;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+dialog button:last-child {
+    background-color: gold;
+    color: black;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}

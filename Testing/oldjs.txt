@@ -1,0 +1,64 @@
+// languageButton.forEach((languageBtn) => {
+//     languageBtn.addEventListener("change", (event) => {
+//         lang = languageBtn.value;
+//         moviesDiv.innerHTML = '';
+//         movies.forEach(element => {
+//             if(lang === '') {
+//                     let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//                     moviesDiv.appendChild(div);
+//             } else if(element.language.includes(lang)) {
+//                 let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//             moviesDiv.appendChild(div);
+//     }
+// });
+//     })
+// })
+
+// formatButtons.forEach((formatBtn) => {
+//     formatBtn.addEventListener("change", (event) => {
+//         format = formatBtn.value;
+//         moviesDiv.innerHTML = '';
+//         movies.forEach(element => {
+//             if(format === '') {
+//                 let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//                     moviesDiv.appendChild(div);
+//             } else if (element.format.includes(format)) {
+//                 let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//                 moviesDiv.appendChild(div);
+//             }
+//         })
+//     })
+// }); 
+
+
+
+
+// let genreButton = document.querySelectorAll('.genre-btn');
+
+// genreButton.forEach((genreBtn) => {
+//     genreBtn.addEventListener("change", (event) => {
+//         genre = genreBtn.value;
+//         moviesDiv.innerHTML = '';
+//         movies.forEach(element => {
+//             if(genre === '') {
+//                     let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//                     moviesDiv.appendChild(div);
+//             } else if(element.genre.includes(genre)) {
+//                 let div = document.createElement('div');
+//                     div.className = 'movie';
+//                     div.innerHTML = `<img src="MovieBanner/${element.image_loc}"><h1>${element.name}</h1> <p>${element.language}</p>`;
+//             moviesDiv.appendChild(div);
+//     }
+// });
+//     })
+// })

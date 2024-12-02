@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main" id="main"></div>
+</body>
+</html>
+<script>
+
+const API_KEY = 'api_key=4f69cee7d1dc1b1d58345c7cbae19784';
+const BASE_URL = 'https://api.themoviedb.org/3';
+const API_URL = BASE_URL + '/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=vote_count.desc&with_original_language=ta&year=2023&'+API_KEY;
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const searchURL = BASE_URL + '/search/movie?'+API_KEY;
+const main = document.getElementById('main');
+
+getMovies(API_URL);
+function getMovies(url) {
+  lastUrl = url;
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(url);
+        if(data.results.length !== 0){
+            showMovies(data.results);
+        }else{
+            main.innerHTML= `<h1 class="no-results">No Results Found</h1>`
+        }
+    })
+}
+const API_URL2 = BASE_URL + '/discover/movie?include_adult=true&include_video=false&language=en-US&page=2&sort_by=vote_count.desc&with_original_language=ta&year=2023&'+API_KEY;
+getMovies(API_URL2);
+
+function showMovies(data) {
+    data.forEach(movie => {
+        const {title, poster_path, vote_count,vote_average} = movie;
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+             <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+                <span class="certification">U/A</span>
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="${getColor(vote_average)}">${vote_average}</span>
+            </div>
+        `;
+        main.appendChild(movieEl);
+    })
+}
+
+function getColor(vote) {
+    if(vote>= 8){
+        return 'green';
+    }else if(vote >= 5){
+        return "orange";
+    }else{
+        return 'red';
+    }
+}
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(20, 27, 37);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.movie {
+    width: 250px;
+    height: 430px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+    background-color: gold;
+    position:relative;
+    transition: .5s ease;
+}
+
+.movie img{
+    width:100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.movie:hover {
+    outline: 2px solid gold;
+}
+.certification {
+    border: 1px solid #000;
+    background-color: white;
+    border-radius: 10%;
+    padding: 2px;
+    position: absolute;
+    right: 10px;
+    bottom: 80px;
+}
+
+.movie-info{
+    color:#eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
+.movie-info h3{
+    margin-top: 0;
+    color: #000;
+    margin-right: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.movie-info span{
+    background-color: #22254b;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.movie-info span.green{
+    color:lightgreen;
+}
+
+.movie-info span.orange{
+    color:orange;
+}
+
+.movie-info span.red{
+    color:red;
+}
+
+
+.overview{
+    padding: 1rem;
+    max-height: 100%;
+    width: 100%;
+}
+.overview p {
+    width: 100%;
+}
+button {
+    background-color: #22254b;
+    outline: none;
+    border: #22254b 2px solid;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.no-results{
+    color:white;
+}
+
+</style>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Booking</title>
+    <!--Google Fonts and Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header>
+      <nav>        
+          <a>NEWS</a>
+          <a>EVENTS</a>
+          <a>MOVIE REVIEW</a>
+          <a>GAMEFLIX</a>
+      </nav>
+      <img src="./Images/Logos/1080x500logo.svg" alt="logo">
+  </header>
+      <div class="tickets">
+        <div class="ticket-selector">
+            <div class="head">
+                <div class="title"><h1 id="movieInfo"></h1><p><span id="showDayInfo">Today,</span> <span id="showDateInfo">Nov 27</span> <span id="showTimeInfo"></span> at <span id="showCinemaInfo"></span></p></div>
+              </div> 
+            <h2>SELECT DATE & TIME:</h2>   
+            <div class="timings">
+               
+                    <div class="dates" id="dates-container">
+                </div>
+                    <div class="times" id="times-container">
+                    </div> 
+              </div>
+            </div>
+          <div class="seats">
+            <div class="status">
+              <div class="item">Available</div>
+              <div class="item">Booked</div>
+              <div class="item">Selected</div>
+            </div>
+            <div class="all-seats">
+                <span style="grid-column: span 12;position: relative; bottom: -10px">Rs. 700 Prime </span><div class="hr-divider"></div>
+            </div>
+          </div>
+          
+        <div class="price">
+          <div class="total">
+            <span> <span class="count">0</span> Tickets </span>
+            <div class="amount">0</div>
+            <div class="seatsBooked" id="seatsBooked"></div>
+          </div>
+          <button type="button">Book</button>
+        </div>
+      </div>
+    <div style="display: none;" class="background-blur" id="blur-background">
+      <dialog close id="dialog">
+        <h1>Terms & Conditions</h1>
+        <ol>
+            <li>The seat layout page for INOX movies is for representational purposes only and the actual seat layout might vary.</li>
+            <li>Ticket is compulsory for children of 3 years & above.</li>
+            <li>Patrons below the age of 18 years cannot be admitted for movies certified A.</li>
+            <li>A baggage counter facility is not available at this cinema.</li>
+            <li>For 3D movies, ticket price includes charges towards usage of 3D glasses.</li>
+            <li>Outside food and beverages are not allowed on the cinema premises.</li>
+            <li>Items like laptops, cameras, knives, lighters, matchboxes, cigarettes, firearms, and all types of inflammable objects are strictly prohibited.</li>
+            <li>Items like carry bags, eatables, helmets, and handbags are not allowed inside the theatres and are strictly prohibited. Kindly deposit at the baggage counter of the mall.</li>
+            <li>Patrons under the influence of alcohol or any other form of drugs will not be allowed inside the cinema premises.</li>
+            <li>Tickets once purchased at the cinema box office cannot be canceled, exchanged, or refunded.</li>
+            <li>INOX may contact the guest to seek feedback for service improvement.</li>
+            <li>Decision(s) taken by INOX shall be final and binding. Rights of admission reserved.</li>
+            <li>Pre-booked food & beverage needs to be collected from the F&B counter.</li>
+            <li>Recording of a film through mobile or camera is strictly prohibited and is a punishable offense.</li>
+            <li>Smoking is strictly not permitted inside the cinema premises. Cigarettes/lighters/matchsticks/Gutkha/Pan masala etc. will not be allowed.</li>
+            <li>Ticket prices are subject to change without any prior notification.</li>
+            <li>For celebrating birthday parties and special occasions, kindly contact the cinema manager.</li>
+            <li>Infants or children less than 4 years of age, or those under 3.6 feet in height, are prohibited from entering the 4DX Auditorium.</li>
+        </ol>
+        <div class="buttons-container">
+            <button onclick="window.location.href = 'movieLibrary.html'">Reject</button>
+            <button onclick="document.getElementById('dialog').close(); document.getElementById('blur-background').style.display = 'none'">Accept</button>
+        </div>
+    </dialog>
+  </div>
+      <!-- <script src="screenLoader.js"></script> -->
+  </body>
+</html>
+
+<style>
+  dialog {
+    background-color: white;
+    outline: none;
+    border-radius: 10px;
+    width: 60%;
+    height: 65%;
+}
+dialog h1 {
+    text-align: center;
+}
+dialog ol {
+    font-size: 14px;
+    overflow: auto;
+}
+dialog .buttons-container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+dialog button:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    color: black;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+dialog button:last-child {
+    background-color: gold;
+    color: black;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+:root {
+    --selected: rgb(255, 203, 5);
+    --disabled: rgb(180, 180, 180);
+}
+
+/* make scrollbar transparent
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+} */
+
+header {
+    background-color: rgba(30, 41, 56, 0.75);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+header img {
+    width: 200px;
+}
+
+nav a {
+    cursor: pointer;
+    margin: 20px;
+    color: #ffffff;
+    font-weight: 900;
+    border-bottom: 2px solid transparent;
+    transition: .4s ease-in-out;
+}
+
+nav a:hover {
+    border-bottom: 2px solid rgb(81, 109, 149);
+}
+
+.tickets {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    font-family: 'DM Sans', serif;
+    /* max-height: 100vh; */
+    /* overflow: auto; */
+    background: rgb(20, 27, 37);
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.ticket-selector {
+    background: rgb(10, 40, 50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    border-bottom: 0.1px solid #fff;
+    margin-bottom: 30px;
+}
+
+.head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.head h1 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.head p {
+    margin-top: 0;
+    text-align: center;
+}
+
+.seats {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 150px;
+    position: relative;
+}
+/* seat hover */
+.seat:hover {
+    outline: 1px solid var(--selected);
+}
+
+.status {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+/* Screen */
+.seats::before {
+    content: "";
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 620px;
+    height: 7px;
+    background: rgb(141, 198, 255);
+    border-radius: 0 0 3mm 3mm;
+    border-top: 0.3mm solid rgb(180, 180, 180);
+}
+/* style for the screen */
+.seats::after {
+    content: "SCREEN THIS WAY";
+    position: absolute;
+    bottom: -25px;
+}
+
+.item {
+    margin-top: 10px;
+    font-size: 12px;
+    position: relative;
+}
+/* available info */
+.item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    background: #2c2c2c;
+    outline: 0.2mm solid rgb(120, 120, 120);
+    border-radius: 0.3mm;
+}
+/* booked info */
+.item:nth-child(2)::before {
+    background: var(--disabled);
+    outline: none;
+}
+
+/* selected info */
+.item:nth-child(3)::before {
+    background: var(--selected);
+    outline: none;
+}
+/* all seats in a grid container */
+.all-seats {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 15px;
+    margin: 60px 0;
+    margin-top: 20px;
+    position: relative;
+}
+/* seats alphabets syling*/
+.seatAlpha {
+    justify-self: center;
+    align-self: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px;
+}
+/*  individual Seats */
+.seat {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c2c2c;
+    border-radius: 5px;
+    outline: 2px solid var(--disabled);
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+/* booked seats style */
+.seat.booked {
+    background: var(--disabled);
+    outline: none;
+    cursor: not-allowed;
+}
+
+.seat::selection {
+    display: none;
+}
+
+.all-seats input:checked + label {
+    background: var(--selected);
+    outline: none;
+    color: black;
+}
+
+.all-seats input:checked + label.booked {
+    background: var(--disabled); /* Keep the booked color */
+    outline: none;
+    color: black; /* Ensure the text color remains consistent */
+}
+
+input {
+    display: none;
+}
+
+.timings {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: left;
+}
+
+.dates {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dates-item {
+    width: 50px;
+    height: 40px;
+    background: #3c3c3c;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+    border-radius: 2mm;
+    cursor: pointer;
+}
+
+.day {
+    font-size: 12px;
+}
+
+.times {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.time {
+    font-size: 14px;
+    width: fit-content;
+    padding: 7px 14px;
+    background: #3c3c3c;
+    border-radius: 2mm;
+    cursor: pointer;
+}
+
+.timings input:checked + label {
+    background: var(--selected);
+    color: black;
+}
+
+.price {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 20px;
+    margin-top: 50px;
+    background-color: #3c3c3c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.total span {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.price button {
+    background: var(--selected);
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 24px 40px;
+    border-radius: 2mm;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.price button:hover {
+    opacity: 0.8;
+}
+.hr-divider {
+    grid-column: span 12; /* Span the full width of the grid */
+    height: 2px;
+    background-color: #28b978; /* Set color of the divider */
+    border: none;
+    margin: 0;
+}
+
+.disabled {
+    background: var(--disabled);
+    outline: none;
+    cursor: not-allowed;
+}
+</style>
+
+<script>
+  let cinemaInfo = document.getElementById('showCinemaInfo');
+let dayInfo = document.getElementById('showDayInfo');
+let dateInfo = document.getElementById('showDateInfo');
+let movieInfo = document.getElementById('movieInfo');
+let timeInfo = document.getElementById('showTimeInfo');
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const movieName = urlParams.get('movie'); 
+const movieLang = urlParams.get('lang');
+
+movieInfo.innerHTML = movieName + ' • ' + movieLang;
+
+cinemaInfo.textContent = 'Vega City Mall, Near Bannerghatta Road, Bengaluru';
+
+let seats = document.querySelector(".all-seats");
+const totalSeats = 70;
+const halfseats = totalSeats / 2;
+let ticketPrice = 700;
+const rows = 10; // Number of seats in each row
+const columns = Math.ceil(totalSeats / rows); // Calculate total columns to fit all seats
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+for (let col = 1; col <= columns; col++) {
+    let alpha = alphabet[col - 1];
+    seats.insertAdjacentHTML(
+        "beforeend",
+        `<label class="seatAlpha">${alpha}</label>`
+    );
+    for (let row = 1; row <= rows; row++) {
+        let seatLabel = row; // Reset seat label for each column
+        let seatId = `${row}`; // Unique ID for each seat
+        let randint = Math.floor(Math.random() * 2);
+        let booked = randint === 1 ? "booked" : ""; // Randomly mark seats as booked
+        // Seat Gap Creator
+        if (row === (rows/2+1)) {
+            seats.insertAdjacentHTML("beforeend", `<label style="grid-column: span 1"></label>`);
+        }
+
+        seats.insertAdjacentHTML(
+            "beforeend",
+            `<input type="checkbox" value="${ticketPrice}" name="tickets" id="${alpha}${seatId}" />
+             <label for="${alpha}${seatId}" class="seat ${booked}">${seatLabel}</label>`
+        );
+    }
+    if (col === Math.ceil(columns / 2)) {
+        seats.insertAdjacentHTML("beforeend", `<span style="grid-column: span 12;position: relative; bottom: -10px">Rs. 500 Executive </span><div class="hr-divider"></div>`);
+        ticketPrice = 500;
+    }
+}
+
+let bookedSeats = document.querySelectorAll('.seat.booked');
+bookedSeats.forEach(seat => {
+    seat.addEventListener('click', (event) => {
+        event.preventDefault();
+    });
+});
+
+let tickets = seats.querySelectorAll("input");
+let ticketsBooked = [];
+document.getElementById('seatsBooked').innerHTML = 'Seats:' + ticketsBooked.join(', ');
+tickets.forEach((ticket) => {
+    ticket.addEventListener("change", (event) => {
+        let seatLabel = event.target.nextElementSibling;
+        if (seatLabel.classList.contains('booked')) {
+            event.preventDefault(); // Prevent selection of booked seats
+            return;
+        }
+
+        let amount = document.querySelector(".amount").innerHTML;
+        let count = document.querySelector(".count").innerHTML;
+        amount = Number(amount);
+        count = Number(count);
+
+        if (count === 10 && ticket.checked) {
+            alert('10 is the limit');
+            event.preventDefault(); // Prevent selecting more than 10 seats
+            ticket.checked = false;
+            return;
+        }
+
+        if (ticket.checked) {
+            count += 1;
+            amount += Number(ticket.value);
+            ticketsBooked.push(ticket.id);
+        } else {
+            count -= 1;
+            amount -= Number(ticket.value);
+            ticketsBooked = ticketsBooked.filter(id => id !== ticket.id);
+        }
+
+        document.getElementById('seatsBooked').innerHTML = 'Seats: ' + ticketsBooked.join(', ');
+        document.querySelector(".amount").innerHTML = amount;
+        document.querySelector(".count").innerHTML = count;
+    });
+});
+
+function updateDates() {
+    const today = new Date();
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const datesContainer = document.getElementById('dates-container');
+
+    // Clear existing dates
+    datesContainer.innerHTML = '';
+
+    // Add dates for the next 20 days
+    for (let i = 0; i < 20; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i); // Incrementing The Date Daily as i Increases
+
+        const day = days[date.getDay()]; // Taking the Day From Days Array
+        const dateNumber = date.getDate();
+        const month = date.toLocaleString('default', { month: 'short' });
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'date';
+        input.id = `d${i + 1}`;
+        if (i === 0) input.checked = true;
+        if (i > 8) {
+            input.disabled = true;
+            input.classList.add('disabled');
+        }
+
+        const label = document.createElement('label');
+        label.className = 'dates-item';
+        label.htmlFor = `d${i + 1}`;
+        if (i > 8) label.classList.add('disabled');
+
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'day';
+        dayDiv.innerText = day;
+        if (i > 8) dayDiv.classList.add('disabled');
+
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'date';
+        dateDiv.innerText = dateNumber;
+        if (i > 8) dateDiv.classList.add('disabled');
+
+        label.appendChild(dayDiv);
+        label.appendChild(dateDiv);
+
+        datesContainer.appendChild(input);
+        datesContainer.appendChild(label);
+
+        // Add event listener to update dateInfo and dayInfo
+        input.addEventListener('change', () => {
+            dateInfo.textContent = `${day}, ${month} ${dateNumber}`;
+            if (i === 0) {
+                dayInfo.textContent = 'Today,';
+            } else if (i === 1) {
+                dayInfo.textContent = 'Tomorrow,';
+            } else {
+                dayInfo.textContent = '';
+            }
+        });
+    }
+}
+
+// Function to update the times based on the system time with random increments
+function updateTimes() {
+    const timesContainer = document.getElementById('times-container');
+    const startTime = new Date();
+    startTime.setHours(9, 0, 0, 0); // Start time at 9:00 AM
+
+    // Clear existing times
+    timesContainer.innerHTML = '';
+
+    // Array to store time slots
+    const timeSlots = [];
+
+    // Add time slots with random increments of 15, 30, or 45 minutes
+    for (let i = 0; i < 18; i++) {
+        const time = new Date(startTime);
+        const increments = [15, 30, 45];
+        const randomIncrement = increments[Math.floor(Math.random() * increments.length)];
+        time.setMinutes(startTime.getMinutes() + i * randomIncrement);
+        const hours = time.getHours().toString().padStart(2, '0');
+        const minutes = time.getMinutes().toString().padStart(2, '0');
+        const timeString = `${hours}:${minutes}`;
+        timeSlots.push(timeString);
+    }
+
+    // Sort time slots in ascending order
+    timeSlots.sort();
+
+    // Add sorted time slots to the container
+    timeSlots.forEach((timeString, index) => {
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'time';
+        input.id = `t${index + 1}`;
+        if (index === 0) input.checked = true;
+
+        const label = document.createElement('label');
+        label.className = 'time';
+        label.htmlFor = `t${index + 1}`;
+        label.innerText = timeString;
+
+        timesContainer.appendChild(input);
+        timesContainer.appendChild(label);
+
+        input.addEventListener('change', () => {
+          timeInfo.textContent = timeString;
+      });
+    });
+}
+
+// Call the functions to update the dates and times
+updateDates();
+updateTimes();
+
+</script>

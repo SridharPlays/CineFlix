@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        section, aside {
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+        }
+        .main {
+            flex: 70%;
+        }
+        .sidebar {
+            flex: 30%;
+            background-color: #ddd;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ticket Booking Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="main">
+            <h2>Book Your Tickets Now!</h2>
+            <p><strong>Enjoy the best events and shows in town.</strong> <em>Don't miss out!</em> <mark>Book your tickets today!</mark></p>
+            
+            <h3>Event Categories</h3>
+            <ul>
+                <li>Concerts</li>
+                <li>Theater</li>
+                <li>Sports</li>
+            </ul>
+            <ol>
+                <li>Music Festivals</li>
+                <li>Plays</li>
+                <li>Football Matches</li>
+            </ol>
+            <dl>
+                <dt>Concerts</dt>
+                <dd>Live music performances by top artists.</dd>
+                <dt>Theater</dt>
+                <dd>Dramatic performances and plays.</dd>
+                <dt>Sports</dt>
+                <dd>Exciting sports events and matches.</dd>
+            </dl>
+
+            <h3>Monthly Events</h3>
+            <table>
+                <tr>
+                    <th rowspan="2">Event</th>
+                    <th colspan="2">Date</th>
+                </tr>
+                <tr>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+                <tr>
+                    <td>Concert</td>
+                    <td>1st Jan</td>
+                    <td>3rd Jan</td>
+                </tr>
+                <tr>
+                    <td>Theater</td>
+                    <td>5th Jan</td>
+                    <td>7th Jan</td>
+                </tr>
+                <tr>
+                    <td>Sports</td>
+                    <td>10th Jan</td>
+                    <td>12th Jan</td>
+                </tr>
+            </table>
+
+            <h3>Book Your Tickets</h3>
+            <form action="submit_booking.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="event">Event:</label>
+                <select id="event" name="event">
+                    <option value="concert">Concert</option>
+                    <option value="theater">Theater</option>
+                    <option value="sports">Sports</option>
+                </select><br><br>
+                <label for="tickets">Number of Tickets:</label>
+                <input type="number" id="tickets" name="tickets" min="1" max="10" required><br><br>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required><br><br>
+                <input type="submit" value="Book Now">
+            </form>
+
+            <h3>Event Highlights</h3>
+            <figure>
+                <img src="event.jpg" alt="Event Image" usemap="#eventmap">
+                <figcaption>Click on the areas to learn more about each event.</figcaption>
+                <map name="eventmap">
+                    <area shape="rect" coords="34,44,270,350" alt="Concert" href="concert.html">
+                    <area shape="circle" coords="337,300,44" alt="Theater" href="theater.html">
+                    <area shape="poly" coords="372,58,430,62,430,120,372,120" alt="Sports" href="sports.html">
+                </map>
+            </figure>
+
+            <h3>Event Videos</h3>
+            <video width="320" height="240" controls>
+                <source src="event_highlights.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h3>Event Audio</h3>
+            <audio controls>
+                <source src="event_audio.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <h3>Event Chart</h3>
+            <canvas id="eventChart" width="400" height="400"></canvas>
+            <script>
+                var canvas = document.getElementById('eventChart');
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(10, 10, 150, 100);
+            </script>
+        </section>
+
+        <aside class="sidebar">
+            <h3>Upcoming Events</h3>
+            <ul>
+                <li>Music Festivals</li>
+                <li>Plays</li>
+                <li>Football Matches</li>
+            </ul>
+        </aside>
+    </div>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We provide the best ticket booking service for various events and shows.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@ticketbooking.com</p>
+        <p>Phone: +123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ticket Booking Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

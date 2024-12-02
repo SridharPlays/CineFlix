@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Booking</title>
+    <!--Google Fonts and Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Styles/screenLoader.css">
+    <!-- <link rel="stylesheet" href="./Styles/dialogBox.css"> -->
+  </head>
+  <body>
+    <header>
+      <nav>        
+          <a>NEWS</a>
+          <a>EVENTS</a>
+      </nav>
+      <img src="./Images/Logos/1080x500logo.svg" alt="logo">
+  </header>
+      <div class="tickets">
+        <div class="ticket-selector">
+            <div class="head">
+                <div class="title"><h1 id="movieInfo"></h1><p><span id="showDayInfo">Today,</span> <span id="showDateInfo">Nov 27</span> <span id="showTimeInfo"></span> at <span id="showCinemaInfo"></span></p></div>
+              </div> 
+            <h2>SELECT DATE & TIME:</h2>   
+            <div class="timings">
+               
+                    <div class="dates" id="dates-container">
+                </div>
+                    <div class="times" id="times-container">
+                    </div> 
+              </div>
+            </div>
+          <div class="seats">
+            <div class="status">
+              <div class="item">Available</div>
+              <div class="item">Booked</div>
+              <div class="item">Selected</div>
+            </div>
+            <div class="all-seats">
+                <span style="grid-column: span 21;position: relative; bottom: -10px">Rs. 700 Recliner </span><div class="hr-divider"></div>
+            </div>
+          </div>
+          
+        <div class="price">
+          <div class="total">
+            <span> <span class="count">0</span> Tickets </span>
+            <div class="amount">0</div>
+            <div class="seatsBooked" id="seatsBooked"></div>
+          </div>
+          <button type="button">Book</button>
+        </div>
+      </div>
+    <div class="background-blur" id="blur-background">
+      <dialog open id="dialog">
+        <h1>Terms & Conditions</h1>
+        <ol>
+            <li>The seat layout page for Cineflix movies is for representational purposes only and the actual seat layout might vary.</li>
+            <li>Ticket is compulsory for children of 3 years & above.</li>
+            <li>Patrons below the age of 18 years cannot be admitted for movies certified A.</li>
+            <li>A baggage counter facility is not available at this cinema.</li>
+            <li>For 3D movies, ticket price includes charges towards usage of 3D glasses.</li>
+            <li>Outside food and beverages are not allowed on the cinema premises.</li>
+            <li>Items like laptops, cameras, knives, lighters, matchboxes, cigarettes, firearms, and all types of inflammable objects are strictly prohibited.</li>
+            <li>Items like carry bags, eatables, helmets, and handbags are not allowed inside the theatres and are strictly prohibited. Kindly deposit at the baggage counter of the mall.</li>
+            <li>Patrons under the influence of alcohol or any other form of drugs will not be allowed inside the cinema premises.</li>
+            <li>Tickets once purchased at the cinema box office cannot be canceled, exchanged, or refunded.</li>
+            <li>Cineflix may contact the guest to seek feedback for service improvement.</li>
+            <li>Decision(s) taken by Cineflix shall be final and binding. Rights of admission reserved.</li>
+            <li>Pre-booked food & beverage needs to be collected from the F&B counter.</li>
+            <li>Recording of a film through mobile or camera is strictly prohibited and is a punishable offense.</li>
+            <li>Smoking is strictly not permitted inside the cinema premises. Cigarettes/lighters/matchsticks/Gutkha/Pan masala etc. will not be allowed.</li>
+            <li>Ticket prices are subject to change without any prior notification.</li>
+            <li>For celebrating birthday parties and special occasions, kindly contact the cinema manager.</li>
+            <li>Infants or children less than 4 years of age, or those under 3.6 feet in height, are prohibited from entering the 4DX Auditorium.</li>
+        </ol>
+        <div class="buttons-container">
+            <button onclick="window.location.href = 'movieLibrary.html'">Reject</button>
+            <button onclick="document.getElementById('dialog').close(); document.getElementById('blur-background').style.display = 'none'; document.body.style.overflowY = 'scroll' ">Accept</button>
+        </div>
+    </dialog>
+  </div>
+      <script src="./Scripts/screenLoader.js"></script>
+  </body>
+</html>
