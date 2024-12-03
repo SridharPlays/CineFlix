@@ -1,72 +1,103 @@
-<figure>
-    <img width="500px" src="../Images/blackmyth.jpeg">
-    <figcaption>Black Myth: Wukong</figcaption>
-</figure>
-
-<h2>Image Maps</h2>
-<p>Click on the computer, the phone, or the cup of coffee to go to a new page and read more about the topic:</p>
-
-<img src="../Images/oppenheimer.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
-
-<map name="workmap">
-  <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
-  <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
-  <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
-</map>
-
-<table>
-    <tr>
-        <th>AUDI No.</th>
-        <th>AUDI Format</th>
-        <th>AUDI Capacity</th>
-        <th colspan="2">AUDI Features</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>IMAX 3D</td>
-        <td>200</td>
-        <td>3D</td>
-        <td>Dolby Atmos</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>4DX</td>
-        <td>150</td>
-        <td>Motion Seats</td>
-        <td>Wind Effects</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>2D</td>
-        <td>250</td>
-        <td>Surround Sound</td>
-        <td>Recliner Seats</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>IMAX 3D</td>
-        <td>180</td>
-        <td>3D</td>
-        <td>Laser Projection</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>4DX</td>
-        <td>160</td>
-        <td>Water Sprays</td>
-        <td>Fog Effects</td>
-    </tr>
-</table>
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tables</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=download"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <header>
+        <h2>Cineflix Cinemas</h2>
+      </header>
+      <div class="wrapper">
+        <table>
+          <thead>
+            <tr>
+                <th>Auditorium No.</th>
+                <th>Auditorium Format</th>
+                <th>Auditorium Capacity</th>
+                <th>Auditorium Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr> <td>01</td> <td>Standard 2D</td> <td>400</td> <td>2D, Dolby Atmos, Recliner Seats, Surround Sound</td> </tr> <tr> <td>02</td> <td>IMAX</td> <td>200</td> <td>3D, Dolby Atmos, Recliner Seats</td> </tr> <tr> <td>03</td> <td>4DX</td> <td>80</td> <td>Motion Seats, Wind Effects, Water Sprays</td> </tr> <tr> <td>04</td> <td>Gold</td> <td>20</td> <td>Luxury Seating, Private Viewing, Complimentary Snacks</td> </tr> <tr> <td>05</td> <td>Standard 2D</td> <td>350</td> <td>2D, Dolby Atmos, Surround Sound</td> </tr> <tr> <td>06</td> <td>IMAX</td> <td>220</td> <td>3D, Laser Projection, Recliner Seats</td> </tr> <tr> <td>07</td> <td>4DX</td> <td>90</td> <td>Motion Seats, Wind Effects, Water Sprays, Fog Effects</td> </tr> <tr> <td>08</td> <td>Gold</td> <td>25</td> <td>Luxury Seating, Private Viewing, Gourmet Dining</td> </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
-
 <style>
-    table {
-        width: 100%;
+    body {
+        background: #10192d;
+        color: #8f9db2;
+        display: grid;
+        place-items: center;
+        margin: 0;
+        height: 100vh;
+        font-family: "Poppins",sans-serif;
     }
-    table,tr,th,td {
-        border: 1px solid black;
+    :root {
+        --color-primary: #1e64f0;
+    }
+    .wrapper {
+        position: relative;
+    }
+    .card {
+        background: #17223c;
+        border-radius: 16px;
+        border: 1px solid rgb(255 255 255 / 10%);
+        padding: 10px 24px 14px;
+        font-size: 12px;
+        width: fit-content;
+    }
+    .card header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        color: #e0e0e0;
+        border-bottom: 1px solid rgb(255 255 255 / 8%);
+    }
+    .card h2 {
+        font-size: 26px;
+        font-weight: 400;
+    }
+    .card table {
         border-collapse: collapse;
+        text-align: left;
+        width: 100%;
+        font-size: 14px;
+    }
+    .card table th {
+        font-weight: 400;
+        text-transform: capitalize;
+        width: 33.33%;
+        color: #5b6781;
+        text-align: center;
+    }
+    .card table :is(th, td) {
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 32px;
+      padding: 6px 10px 6px 0;
+      border-bottom: 1px solid rgb(255 255 255 / 4%);
+    }
+    .card table tbody tr:last-child td {
+      border-bottom: 0;
     }
 </style>

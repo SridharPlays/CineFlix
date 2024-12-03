@@ -163,7 +163,14 @@ const movies = [{
     language: "English",
     format: "IMAX 2D, 4DX, 2D",
     genre: "Action, Adventure, Drama"
-}
+},
+{
+    name: "Pacific Rim",
+    image_loc: "PacificRim.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Action, Adventure, Sci-Fi",
+}    
 ];
 
 const languageList = [
@@ -223,7 +230,6 @@ let languageDiv = document.getElementById('languageOptions');
 languageList.forEach((language)=> {
     languageHTML = document.createElement('div');
     languageHTML.className = "option";
-    let languageChecked, languageValue = '';
     if(i === 0 ) {
     languageChecked = 'checked';
     languageValue = 'All';
@@ -319,10 +325,8 @@ let selectedMovieLang = '';
 moviesDiv.addEventListener('click', (event) => {
     const movieElement = event.target.closest('.movie');
     if (movieElement) {
-        selectedMovieName = movieElement.querySelector('h1').innerText; 
-        selectedLang = movieElement.querySelector('p').innerText;
-        selectedMovieLang = selectedLang.split(',',5);
-        window.location.href = `screenLoader.html?movie=${encodeURIComponent(selectedMovieName)}&lang=${encodeURIComponent(selectedMovieLang[0])}`;
+        selectedMovieName = movieElement.querySelector('h1').innerText;
+        window.location.href = `movieInfo.html?movie=${encodeURIComponent(selectedMovieName)}`;
     }
 });
 
