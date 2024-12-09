@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Carousel Example</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a>NEWS</a>
+        <a>EVENTS</a>
+      </nav>
+      <img
+        onclick="window.location.href = 'index.html'"
+        src="../Images/Logos/1080x500logo.svg"
+        alt="logo"
+      />
+    </header>
+
+    <div class="container">
+      <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li
+            data-target="#imageCarousel"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li data-target="#imageCarousel" data-slide-to="1"></li>
+          <li data-target="#imageCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="../MovieLargeBanner/Interstellar.jpg"
+              class="d-block w-100"
+              alt="Slide 1"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Interstellar</h5>
+              <p>A journey beyond the stars.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../MovieLargeBanner/Leo.jpg"
+              class="d-block w-100"
+              alt="Slide 2"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Leo</h5>
+              <p>Naaanga Ready... Nenga Ready ahhh....?</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../MovieLargeBanner/PacificRim.jpg"
+              class="d-block w-100"
+              alt="Slide 3"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Pacific Rim</h5>
+              <p>Defend the Earth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <h1>Search Movies</h1>
+      <div class="input-box">
+        <svg
+          id="search-btn"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          class="search-icon"
+        >
+          <g>
+            <path
+              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+            ></path>
+          </g>
+        </svg>
+        <input
+          id="search-query"
+          class="search-btn"
+          type="search"
+          placeholder="Search..."
+          name="searchbar"
+        />
+      </div>
+      <h1>Languages</h1>
+      <div class="lang-options" id="languageOptions"></div>
+      <h1>Format</h1>
+      <div class="format-options" id="formatOptions"></div>
+      <h1>Genre</h1>
+      <div class="genre-options" id="genreOptions"></div>
+      <div class="reset-btn">
+        <input id="reset" class="reset-btn" type="reset" />
+      </div>
+    </aside>
+    <section class="movies-catalogue">
+      <div class="catalogue-header">
+        <h1>Movies in Bengaluru</h1>
+      </div>
+      <div id="movies" class="movies"></div>
+    </section>
+
+    <!-- Toast Notification Codes-->
+    <div id="toast" class="toast">
+      <div class="success">
+        <div class="success__icon">
+          <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z"
+              fill="#393a37"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <div class="success__title">
+          Success! Your action was completed successfully.
+        </div>
+        <div id="close-btn" class="success__close">
+          <svg
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+              fill="#393a37"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="error-toast" class="toast">
+      <div class="error">
+        <div class="error__icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            viewBox="0 0 24 24"
+            height="24"
+            fill="none"
+          >
+            <path
+              fill="#393a37"
+              d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"
+            ></path>
+          </svg>
+        </div>
+        <div class="error__title">
+          Oops! An error occurred. Please check your input.
+        </div>
+        <div class="error__close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            viewBox="0 0 20 20"
+            height="20"
+          >
+            <path
+              fill="#393a37"
+              d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <script src="../Scripts/movieLibrary.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "DM Sans", serif;
+      background-color: #000;
+    }
+    :root {
+      --gold: rgb(255, 203, 5);
+      --sb-track-color: #101010;
+      --sb-size: 4px;
+    }
+    header {
+      background-color: rgba(30, 41, 56, 0.75);
+      backdrop-filter: blur(15px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 30px;
+    }
+    header img {
+      width: 200px;
+    }
+
+    nav a {
+      cursor: pointer;
+      margin: 20px;
+      color: #ffffff;
+      font-weight: 900;
+      border-bottom: 2px solid transparent;
+      transition: 0.4s ease-in-out;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid rgb(81, 109, 149);
+    }
+    .container {
+        width: 100%;
+        max-width: 2800px;
+    }
+    .carousel-inner img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.512);
+      padding: 10px 20%;
+    }
+
+    aside {
+      float: left;
+      color: white;
+      padding-right: 2%;
+      padding-left: 1%;
+      padding-top: 2%;
+      width: 20%;
+      height: 100vh;
+      overflow-y: auto;
+      background-color: #101010;
+      padding-bottom: 2%;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    aside::-webkit-scrollbar {
+      width: var(--sb-size);
+    }
+
+    aside::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 10px;
+      margin: 20px;
+      margin-right: 10px;
+    }
+
+    aside::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-top: none;
+      border-radius: 10px;
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+      body {
+        scrollbar-color: var(--gold) var(--sb-track-color);
+      }
+    }
+
+    aside h1 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      cursor: default;
+    }
+    aside .option,
+    #reset {
+      font-size: 20px;
+      width: 100%;
+      background: rgba(30, 41, 56, 0.75);
+      margin: 5px;
+      border-radius: 5px;
+      border: 2px solid transparent;
+    }
+    aside .option label:hover {
+      border: 2px solid rgba(255, 205, 5, 0.8);
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    input[type="radio"]:checked + label {
+      background-color: var(--gold);
+      color: #000;
+    }
+    aside label {
+      text-align: center;
+      display: block;
+      width: 96%;
+      border-radius: 2px;
+      cursor: pointer;
+      padding: 12px 12px 12px 0px;
+      border: 2px solid transparent;
+    }
+    .option + label {
+      background-color: aqua;
+    }
+    #reset {
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      background-color: var(--gold);
+    }
+    aside .lang-options .option input {
+      border-radius: 20px;
+    }
+    .option input[type="radio"]:checked + label {
+      background-color: var(--gold);
+      color: white;
+      box-shadow: 0 0 10px var(--gold, 0.5);
+    }
+
+    .catalogue-header h1 {
+      color: #ffffff;
+      margin: 20px 0px;
+      margin-left: 26%;
+      cursor: default;
+      /* text-align:center;    */
+    }
+    .input-box {
+      display: flex;
+      line-height: 28px;
+      align-items: center;
+      position: relative;
+      /* max-width: 320px; */
+      width: 100%;
+    }
+
+    .search-btn {
+      font-family: "DM Sans", sans-serif;
+      width: 100%;
+      height: 45px;
+      padding-left: 2.5rem;
+      box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+      border: 0;
+      border-radius: 12px;
+      background-color: #16171d;
+      outline: none;
+      color: #bdbecb;
+      transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+      cursor: text;
+      z-index: 0;
+    }
+
+    .search-btn::placeholder {
+      color: #bdbecb;
+    }
+
+    .search-btn:hover {
+      box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+    }
+
+    .search-btn:focus {
+      box-shadow: 0 0 0 2.5px #2f303d;
+    }
+    .search-btn::-webkit-search-cancel-button {
+      position: absolute;
+      -webkit-appearance: none;
+      color: inherit;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+      cursor: pointer;
+      right: 5px;
+      width: 30px;
+      height: 30px;
+      filter: invert(27%);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      fill: #bdbecb;
+      width: 1rem;
+      height: 1rem;
+      pointer-events: none;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .movies {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    /* make scrollbar transparent */
+    .movies::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+    .movie {
+      width: 350px;
+      height: 550px;
+      background-color: rgb(24, 37, 40);
+      margin: 10px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .movie img {
+      width: 100%;
+      height: 80%;
+      object-fit: cover;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    .movie h1 {
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .movie h1,
+    .movie p {
+      text-align: center;
+      margin: 1px 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row-reverse;
+        padding: 20px;
+      }
+      nav {
+        flex-direction: row;
+        align-items: center;
+      }
+      nav a {
+        margin: 10px 10px;
+      }
+      aside {
+        width: 95%;
+        height: auto;
+        /* padding: 10px; */
+        overflow: hidden;
+      }
+      .catalogue-header h1 {
+        margin-left: 0;
+        text-align: center;
+      }
+      .input-box {
+        width: 100%;
+      }
+      .movies {
+        flex-direction: column;
+        height: auto;
+      }
+      .movie {
+        width: 90%;
+        height: auto;
+        /* margin: 10px 0; */
+      }
+      .movie img {
+        height: auto;
+      }
+    }
+
+    /* Toast Notification Styles! */
+    #toast,
+    #error-toast {
+      visibility: hidden;
+      position: fixed;
+      z-index: 1;
+      right: 30px;
+      top: 30px;
+      font-size: 17px;
+    }
+
+    #toast.show,
+    #error-toast.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    .success {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      width: 320px;
+      padding: 12px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      background: #edfbd8;
+      border-radius: 8px;
+      border: 1px solid #84d65a;
+      box-shadow: 0px 0px 5px -3px #111;
+    }
+
+    .success__icon {
+      width: 20px;
+      height: 20px;
+      transform: translateY(-2px);
+      margin-right: 8px;
+    }
+
+    .success__icon path {
+      fill: #84d65a;
+    }
+
+    .success__title {
+      font-weight: 500;
+      font-size: 14px;
+      color: #2b641e;
+    }
+
+    .success__close {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .success__close path {
+      fill: #2b641e;
+    }
+
+    .error {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      width: 320px;
+      padding: 12px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      background: #fde8e8;
+      border-radius: 8px;
+      border: 1px solid #f5c6c6;
+      box-shadow: 0px 0px 5px -3px #111;
+    }
+    .error__icon {
+      width: 20px;
+      height: 20px;
+      transform: translateY(-2px);
+      margin-right: 8px;
+    }
+    .error__icon path {
+      fill: #f5c6c6;
+    }
+    .error__title {
+      font-weight: 500;
+      font-size: 14px;
+      color: #a94442;
+    }
+    .error__close {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .error__close path {
+      fill: #a94442;
+    }
+
+    @-webkit-keyframes fadein {
+      from {
+        right: 0;
+        opacity: 0;
+      }
+      to {
+        right: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        right: 0;
+        opacity: 0;
+      }
+      to {
+        right: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        right: 30px;
+        opacity: 1;
+      }
+      to {
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        right: 30px;
+        opacity: 1;
+      }
+      to {
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
+
+  <script>
+    const movies = [{
+    name: "Leo",
+    image_loc: "Leo.jpg",
+    language: "Tamil, Telugu, Hindi, Kannada, Malayalam",
+    format: "IMAX 2D, 2D",
+    genre: "Action, Crime, Drama, Thriller"
+},
+{
+    name: "Lucky Bhaskar",
+    image_loc: "LuckyBhaskar.jpg",
+    language: "Telugu, Malayalam, Tamil, Hindi",
+    format: "2D",
+    genre: "Crime, Drama, Thriller"
+},
+{
+    name: "Transformer One",
+    image_loc: "TransformerOne.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Animation, Action, Adventure, Fantasy, Sci-Fi"
+},
+{
+    name: "Minecraft",
+    image_loc: "Minecraft.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Animation, Adventure, Fantasy",
+},
+{
+    name: "Pacific Rim",
+    image_loc: "PacificRim.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Action, Adventure, Sci-Fi",
+},
+{
+    name: "Amaran",
+    image_loc: "Amaran.jpg",
+    language: "Tamil",
+    format: "2D",
+    genre: "Action, Biography, Drama, War"
+},
+{
+    name: "Interstellar",
+    image_loc: "Interstellar.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Adventure, Drama, Sci-Fi"
+},
+{
+    name: "Aavesham",
+    image_loc: "Aavesham.jpg",
+    language: "Malayalam",
+    format: "2D",
+    genre: "Action, Comedy"
+},
+{   name: "KGF Chapter 2", 
+    image_loc: "KGFChapter2.jpg", 
+    language: "Kannada, Tamil, Hindi, Telugu, Malayalam", 
+    format: "2D", 
+    genre: "Action, Drama" 
+}, 
+{   
+    name: "Avengers Endgame",
+    image_loc: "AvengersEndgame.jpg",
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Action, Adventure, Drama, Sci-Fi" 
+}, 
+{ 
+    name: "Godzilla x Kong: The New Empire", 
+    image_loc: "GodzillaxKong.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Action, Adventure, Sci-Fi" 
+}, 
+{ name: "Avatar: The Way of Water", 
+    image_loc: "Avatar2.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Action, Adventure, Fantasy, Sci-Fi" 
+}, 
+{ 
+    name: "Cars 3", 
+    image_loc: "Cars3.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Animation, Adventure, Comedy, Sport" 
+}, 
+{ 
+    name: "Mission Impossible", 
+    image_loc: "MissionImpossible.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Action, Adventure, Thriller" 
+}, 
+{ 
+    name: "The Wild Robot", 
+    image_loc: "WildRobot.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Animation, Adventure, Sci-Fi" 
+}, 
+{ 
+    name: "Mufasa: The Lion King", 
+    image_loc: "Mufasa.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Animation, Adventure, Drama" 
+}, 
+{ 
+    name: "Manjummel Boys", 
+    image_loc: "ManjummelBoys.jpg", 
+    language: "Malayalam", 
+    format: "2D", 
+    genre: "Comedy, Drama" 
+}, 
+{ 
+    name: "Soorarai Potru", 
+    image_loc: "SooraraiPotru.jpg", 
+    language: "Tamil", 
+    format: "2D", 
+    genre: "Biography, Drama" 
+}, 
+{ 
+    name: "Kingdom of the Planet of the Apes", 
+    image_loc: "KingdomOfApes.jpg", 
+    language: "English", 
+    format: "IMAX 3D, 4DX, 2D", 
+    genre: "Action, Adventure, Drama, Sci-Fi" 
+}, 
+{ 
+    name: "Dune: Part Two", 
+    image_loc: "Dune.jpg", 
+    language: "English", 
+    format: "IMAX 2D, 4DX, 2D", 
+    genre: "Adventure, Drama, Sci-Fi" 
+},
+{
+    name: "Alien: Romulus",
+    image_loc: "AlienRomulus.jpg",
+    language: "English",
+    format: "IMAX 2D, 4DX, 2D",
+    genre: "Horror, Sci-Fi, Thriller"
+},
+{
+    name: "Wicked",
+    image_loc: "Wicked.jpg",
+    language: "English",
+    format: "2D",
+    genre: "Fantasy, Romance"
+},
+{
+    name: "Ponniyin Selvan: Part Two",
+    image_loc: "PS2.jpg",
+    language: "Tamil, Hindi, Kannada, Telugu, Malayalam",
+    format: "IMAX 2D, 2D",
+    genre: "Action, Adevnture, History, Drama"
+},
+{
+    name: "Bullet Train",
+    image_loc: "BulletTrain.jpg",
+    language: "English",
+    format: "IMAX 3D",
+    genre: "Action, Comedy, Thriller"
+},
+{
+    name: "How to Train Your Dragon",
+    image_loc: "Dragon.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 3D",
+    genre: "Action, Adventure, Comedy, Drama, Fantasy"
+},
+{
+    name: "Gladiador II",
+    image_loc: "Gladiador.jpg",
+    language: "English",
+    format: "IMAX 2D, 4DX, 2D",
+    genre: "Action, Adventure, Drama"
+}
+];
+
+const languageList = [
+    " ",
+    "English",
+    "Tamil",
+    "Telugu",
+    "Hindi",
+    "Kannada",
+    "Malayalam",
+    "Japanese",
+    "Korean",
+]
+
+const formatList = [
+    " ",
+    "2D",
+    "3D",
+    "IMAX 2D",
+    "IMAX 3D",
+    "4DX"
+]
+
+const genreList = [
+    " ",
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Drama",
+    "Fantasy",
+    "History",
+    "Horror",
+    "Romance",
+    "Sci-Fi",
+    "Thriller"
+];
+
+// Loading all the Movies Dynamically
+let moviesDiv = document.getElementById('movies');
+movies.forEach(element => {
+    let div = document.createElement('div');
+    div.className = 'movie';
+    div.innerHTML = `
+        <img src="../MovieBanner/${element.image_loc}">
+        <h1>${element.name}</h1> 
+        <p>${element.language}</p> 
+        <p>${element.format}</p>
+        `;
+    moviesDiv.appendChild(div);
+});
+
+// Loading Languages Options
+let i = 0;
+let languageDiv = document.getElementById('languageOptions');
+languageList.forEach((language)=> {
+    languageHTML = document.createElement('div');
+    languageHTML.className = "option";
+    if(i === 0 ) {
+    languageChecked = 'checked';
+    languageValue = 'All';
+}
+    languageHTML.innerHTML = `
+        <input id="language${i}" name="language" class="language-btn" value="${i === 0 ? '' : language}" type="radio" ${i === 0 ? 'checked' : ''}>
+        <label for="language${i}">${i === 0 ? 'All' : language}</label>
+        `;
+
+    languageDiv.appendChild(languageHTML);
+    i++;
+})
+
+// Loading Various Format Options 
+i = 0;
+let formatDiv = document.getElementById('formatOptions');
+formatList.forEach((format)=> {
+    formatHTML = document.createElement('div');
+    formatHTML.className = "option";
+    if(i === 0 ) {
+    formatChecked = 'checked';
+    formatValue = 'All';
+}
+    formatHTML.innerHTML = `
+        <input id="format${i}" name="format" class="format-btn" value="${i === 0 ? '' : format}" type="radio" ${i === 0 ? 'checked' : ''}>
+        <label for="format${i}">${i === 0 ? 'All' : format}</label>
+        `;
+
+    formatDiv.appendChild(formatHTML);
+    i++;
+})
+
+// Loading Genre Button Dynamically
+i = 0;
+let genreDiv = document.getElementById('genreOptions');
+genreList.forEach((genre)=> {
+    genreHTML = document.createElement('div');
+    genreHTML.className = "option";
+    let genreChecked, genreValue = '';
+    if(i === 0 ) {
+    genreChecked = 'checked';
+    genreValue = 'All';
+}
+    genreHTML.innerHTML = `
+        <input id="genre${i}" name="genre" class="genre-btn" value="${i === 0 ? '' : genre}" type="radio" ${i === 0 ? 'checked' : ''}>
+        <label for="genre${i}">${i === 0 ? 'All' : genre}</label>
+        `;
+
+    genreDiv.appendChild(genreHTML);
+    i++;
+})
+
+let languageButton = document.querySelectorAll('.language-btn');
+let formatButtons = document.querySelectorAll('.format-btn');
+let genreButtons = document.querySelectorAll('.genre-btn');
+
+// Sorter
+function filterMovies() {
+    const selectedLanguage = document.querySelector('.language-btn:checked')?.value || '';
+    const selectedFormat = document.querySelector('.format-btn:checked')?.value || '';
+    const selectedGenre = document.querySelector('.genre-btn:checked')?.value || '';
+
+    moviesDiv.innerHTML = '';
+    let movieFound = false;
+
+    movies.forEach((movie) => {
+        const languageMatch = selectedLanguage === '' || movie.language.includes(selectedLanguage);
+        const formatMatch = selectedFormat === '' || movie.format.includes(selectedFormat);
+        const genreMatch = selectedGenre === '' || movie.genre.includes(selectedGenre);
+
+        if (languageMatch && formatMatch && genreMatch) {
+            const div = document.createElement('div');
+            let format = movie.format.split(",");
+            div.className = 'movie';
+            div.innerHTML = `
+                <img src="../MovieBanner/${movie.image_loc}" alt="${movie.name} Poster">
+                <h1>${movie.name}</h1>
+                <p>${movie.language}</p>
+                <p>${format[0]} ${format[1] ? `• ${format[1]}` : ""} ${format[2] ? `• ${format[2]}` : ""}  ${format[3] ? `• ${format[3]}` : ""}  ${format[4] ? `• ${format[4]}` : ""}  ${format[5] ? `• ${format[5]}` : ""}</p>
+                <p>${movie.genre}</p>`
+            moviesDiv.appendChild(div);
+            movieFound = true;
+        }
+    });
+    if(movieFound) {
+        showToast('success')
+    } else {
+        showToast('error');
+    }
+}
+
+
+
+// Sorter Caller !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+languageButton.forEach((btn) => btn.addEventListener('change', filterMovies));
+formatButtons.forEach((btn) => btn.addEventListener('change', filterMovies));
+genreButtons.forEach((btn) => btn.addEventListener('change', filterMovies));
+
+// Movie Info Sender
+let selectedMovieName = '';
+let selectedMovieLang = '';
+moviesDiv.addEventListener('click', (event) => {
+    const movieElement = event.target.closest('.movie');
+    if (movieElement) {
+        selectedMovieName = movieElement.querySelector('h1').innerText;
+        window.location.href = `movieInfo.html?movie=${encodeURIComponent(selectedMovieName)}`;
+    }
+});
+
+
+let resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', () => {
+    document.getElementById('language0').checked = true;
+    document.getElementById('genre0').checked = true;
+    document.getElementById('format0').checked = true;
+    filterMovies();
+});
+
+// Search Functionality
+let searchButton = document.getElementById('search-query');
+searchButton.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        let MovieName = searchButton.value.toLowerCase();
+        let movieFound = false;
+        if(MovieName.length !== 0) {
+        movies.forEach((movie) => {
+            if (MovieName === movie.name.toLowerCase() || movie.name.toLowerCase().includes(MovieName) && MovieName.length > 1) {
+                moviesDiv.innerHTML = '';
+                let div = document.createElement('div');
+                div.className = 'movie';
+                div.innerHTML = `
+                    <img src="MovieBanner/${movie.image_loc}" alt="${movie.name}">
+                    <h1>${movie.name}</h1>
+                    <p>${movie.language}</p>
+                    <p>${movie.format}</p>
+                `;
+                moviesDiv.appendChild(div);
+                movieFound = true;
+                showToast('success')
+            }
+        });
+        if (!movieFound) {
+            showToast('error');
+        }
+    };
+    }
+});
+
+// Search Cancel Button
+searchInput.addEventListener('input', function(e) {
+    if (this.value === '') {
+        filterMovies();
+    }
+});
+
+function showToast(type) {
+    var toast;
+    if (type === 'success') {
+        toast = document.getElementById("toast");
+    } else if (type === 'error') {
+        toast = document.getElementById("error-toast");
+    }
+    toast.className = "toast show";
+    setTimeout(function() {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
+}
+
+document.getElementById('close-btn').addEventListener("click", () => {
+    var toast = document.getElementById("toast");
+    toast.className = toast.className.replace("show", "");
+});
+
+document.querySelector('.error__close').addEventListener("click", () => {
+    var toast = document.getElementById("error-toast");
+    toast.className = toast.className.replace("show", "");
+});
+
+
+
+filterMovies();
+  </script>

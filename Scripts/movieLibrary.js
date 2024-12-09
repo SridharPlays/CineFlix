@@ -20,6 +20,20 @@ const movies = [{
     genre: "Animation, Action, Adventure, Fantasy, Sci-Fi"
 },
 {
+    name: "Minecraft",
+    image_loc: "Minecraft.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Animation, Adventure, Fantasy",
+},
+{
+    name: "Pacific Rim",
+    image_loc: "PacificRim.jpg",
+    language: "English",
+    format: "IMAX 3D, 4DX, 2D",
+    genre: "Action, Adventure, Sci-Fi",
+},
+{
     name: "Amaran",
     image_loc: "Amaran.jpg",
     language: "Tamil",
@@ -165,12 +179,12 @@ const movies = [{
     genre: "Action, Adventure, Drama"
 },
 {
-    name: "Pacific Rim",
-    image_loc: "PacificRim.jpg",
+    name: "Oppenheimer",
+    image_loc: "Oppenheimer.jpg",
     language: "English",
-    format: "IMAX 3D, 4DX, 2D",
-    genre: "Action, Adventure, Sci-Fi",
-}    
+    format: "IMAX 2D, 4DX, 2D",
+    genre: "Biography, Drama, History",
+}
 ];
 
 const languageList = [
@@ -293,6 +307,7 @@ function filterMovies() {
     const selectedGenre = document.querySelector('.genre-btn:checked')?.value || '';
 
     moviesDiv.innerHTML = '';
+    let movieFound = false;
 
     movies.forEach((movie) => {
         const languageMatch = selectedLanguage === '' || movie.language.includes(selectedLanguage);
@@ -310,9 +325,17 @@ function filterMovies() {
                 <p>${format[0]} ${format[1] ? `• ${format[1]}` : ""} ${format[2] ? `• ${format[2]}` : ""}  ${format[3] ? `• ${format[3]}` : ""}  ${format[4] ? `• ${format[4]}` : ""}  ${format[5] ? `• ${format[5]}` : ""}</p>
                 <p>${movie.genre}</p>`
             moviesDiv.appendChild(div);
+            movieFound = true;
         }
     });
+    if(movieFound) {
+        showToast('success')
+    } else {
+        showToast('error');
+    }
 }
+
+
 
 // Sorter Caller !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 languageButton.forEach((btn) => btn.addEventListener('change', filterMovies));
@@ -333,9 +356,9 @@ moviesDiv.addEventListener('click', (event) => {
 
 let resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click', () => {
-    languageButton.forEach((btn) => btn.checked = false);
-    genreButtons.forEach((btn) => btn.checked = false);
-    formatButtons.forEach((btn) => btn.checked = false);
+    document.getElementById('language0').checked = true;
+    document.getElementById('genre0').checked = true;
+    document.getElementById('format0').checked = true;
     filterMovies();
 });
 
@@ -343,7 +366,6 @@ resetBtn.addEventListener('click', () => {
 let searchButton = document.getElementById('search-query');
 searchButton.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
-        // console.log('you entered enter')
         let MovieName = searchButton.value.toLowerCase();
         let movieFound = false;
         if(MovieName.length !== 0) {
@@ -360,10 +382,11 @@ searchButton.addEventListener('keydown', function(e) {
                 `;
                 moviesDiv.appendChild(div);
                 movieFound = true;
+                showToast('success')
             }
         });
         if (!movieFound) {
-            moviesDiv.innerHTML = `<h1>Movie Doesn't Exist</h1>`;
+            showToast('error');
         }
     };
     }
@@ -374,6 +397,29 @@ searchInput.addEventListener('input', function(e) {
     if (this.value === '') {
         filterMovies();
     }
+});
+
+function showToast(type) {
+    var toast;
+    if (type === 'success') {
+        toast = document.getElementById("toast");
+    } else if (type === 'error') {
+        toast = document.getElementById("error-toast");
+    }
+    toast.className = "toast show";
+    setTimeout(function() {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
+}
+
+document.getElementById('close-btn').addEventListener("click", () => {
+    var toast = document.getElementById("toast");
+    toast.className = toast.className.replace("show", "");
+});
+
+document.querySelector('.error__close').addEventListener("click", () => {
+    var toast = document.getElementById("error-toast");
+    toast.className = toast.className.replace("show", "");
 });
 
 

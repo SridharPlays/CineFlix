@@ -12,7 +12,8 @@ const movies = [
         director: "Lokesh Kanagaraj",
         writer: "Lokesh Kanagaraj",
         stars: ["Vijay", "Trisha", "Arjun Sarja"],
-        trailer: "https://www.youtube.com/embed/Po3jStA673E?si=WK58tYXPa_3Yippt"
+        trailer: "https://www.youtube.com/embed/Po3jStA673E?si=WK58tYXPa_3Yippt",
+        music: "Leo.mp3"
     },
     {
         name: "Lucky Bhaskar",
@@ -42,7 +43,8 @@ const movies = [
         director: "Steven Caple Jr.",
         writer: "Joby Harold",
         stars: ["Peter Cullen", "Frank Welker", "Angela Bassett"],
-        trailer: "https://www.youtube.com/embed/u2NuUWuwPCM?si=3K-xygfgrXk3w8Ty"
+        trailer: "https://www.youtube.com/embed/u2NuUWuwPCM?si=3K-xygfgrXk3w8Ty",
+        music: "Transformers.mp3"
     },
     {
         name: "Amaran",
@@ -72,7 +74,8 @@ const movies = [
         director: "Christopher Nolan",
         writer: "Jonathan Nolan, Christopher Nolan",
         stars: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
-        trailer: "https://www.youtube.com/embed/zSWdZVtXT7E?si=PB0ohc7JSi7Bu4oX"
+        trailer: "https://www.youtube.com/embed/zSWdZVtXT7E?si=PB0ohc7JSi7Bu4oX",
+        music: "Interstellar.mp3"
     },
     {
         name: "Aavesham",
@@ -117,7 +120,8 @@ const movies = [
         director: "Anthony Russo, Joe Russo",
         writer: "Christopher Markus, Stephen McFeely",
         stars: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
-        trailer: "https://www.youtube.com/embed/TcMBFSGVi1c?si=TpQ525xCTInCkd90"
+        trailer: "https://www.youtube.com/embed/TcMBFSGVi1c?si=TpQ525xCTInCkd90",
+        music: "Victory.mp3"
     },
     {
         name: "Godzilla x Kong: The New Empire",
@@ -132,7 +136,8 @@ const movies = [
         director: "Adam Wingard",
         writer: "Terry Rossio",
         stars: ["Alexander Skarsgård", "Rebecca Hall", "Brian Tyree Henry"],
-        trailer: "https://www.youtube.com/embed/lV1OOlGwExM?si=CiqyO0jZDyxYRW7T"
+        trailer: "https://www.youtube.com/embed/lV1OOlGwExM?si=CiqyO0jZDyxYRW7T",
+        music: "Godzilla.mp3"
     },
     {
         name: "Avatar: The Way of Water",
@@ -147,7 +152,8 @@ const movies = [
         director: "James Cameron",
         writer: "James Cameron",
         stars: ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
-        trailer: "https://www.youtube.com/embed/1f65r8BUZ5I?si=FArw1TBePmx_OstJ"
+        trailer: "https://www.youtube.com/embed/1f65r8BUZ5I?si=FArw1TBePmx_OstJ",
+        music: "Avatar2.mp3"
     },
     {
         name: "Cars 3",
@@ -238,8 +244,7 @@ const movies = [
         writer: "Sudha Kongara",
         stars: ["Suriya", "Aparna Balamurali", "Paresh Rawal"],
         trailer: "https://www.youtube.com/embed/dyzraT_np8w?si=4yBZAoulfUIiRETD"
-    }
-    ,
+    },
     {
         name: "Kingdom of the Planet of the Apes",
         image_loc: "KingdomOfApes.jpg",
@@ -373,8 +378,42 @@ const movies = [
         director: "Guillermo del Toro",
         writer: "Travis Beacham, Guillermo del Toro",
         stars: ["Charlie Hunnam", "Idris Elba", "Rinko Kikuchi"],
-        trailer: "https://www.youtube.com/embed/5guMumPFBag?si=aznBd1iDLnEJQaqW"
-    }    
+        trailer: "https://www.youtube.com/embed/5guMumPFBag?si=aznBd1iDLnEJQaqW",
+        music: "PacificRim.mp3"
+    },
+    {
+        name: "Minecraft",
+        image_loc: "Minecraft.jpg",
+        language: "English",
+        format: "IMAX 3D, 4DX, 2D",
+        genre: "Animation, Adventure, Fantasy",
+        length: "01:45",
+        imdb_rating: 7.5,
+        age_rating: "U/A",
+        story: "A young adventurer embarks on a journey through the blocky world of Minecraft, facing challenges and discovering the secrets of the land.",
+        director: "Peter Sollett",
+        writer: "Allison Schroeder",
+        stars: ["Jason Momoa", "Jack Black", "Jessica Henwick"],
+        trailer: "https://www.youtube.com/embed/wJO_vIDZn-I?si=4w-VnhJxjjtjCfB0",
+        music: "Minecraft.mp3"
+    },
+    {
+        name: "Oppenheimer",
+        image_loc: "Oppenheimer.jpg",
+        language: "English",
+        format: "IMAX 2D, 4DX, 2D",
+        genre: "Biography, Drama, History",
+        length: "03:00",
+        imdb_rating: 8.5,
+        age_rating: "U/A",
+        story: "The story of J. Robert Oppenheimer, the theoretical physicist who led the Manhattan Project, which developed the atomic bomb during World War II.",
+        director: "Christopher Nolan",
+        writer: "Christopher Nolan",
+        stars: ["Cillian Murphy", "Emily Blunt", "Matt Damon"],
+        trailer: "https://www.youtube.com/embed/uYPbbksJxIg?si=8aSuLgDxnXbsIYdP",
+        music: "Oppenheimer.mp3"
+    }
+    
 ];
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -387,12 +426,35 @@ movies.forEach(element => {
         let [hours, minutes] = length.split(":");
         hours = parseInt(hours, 10);
         let formattedLength = `${hours}h ${minutes}m`;
+        document.title = movieName + " - " + element.age_rating;
+        let musicElement = '';
+        let abbrMeaning = '';
+        if(element.age_rating === 'U/A') {
+            abbrMeaning = "Unrestricted Public Exhibition - Parental Discretion";
+        } else if (element.age_rating === 'U') {
+            abbrMeaning = "Universal";
+        } else {
+            abbrMeaning = "Adult Only";
+        }
+
+        if('music' in element) {
+        musicElement = `
+            <audio id="bgm" controls autoplay loop>
+                <source src="./Musics/${element.music}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <button title="Mute Song" class="mute-button" id="muteBtn"><i class="fa-solid fa-volume-high"></i></Button>
+        `;
+        }
 
         const movieDiv = document.createElement('div');
         movieDiv.classList.add('movie');
         movieDiv.innerHTML += `
+            <button id="previous-button" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+
           <header>
-              <h2>${element.name} - ${element.age_rating}</h2>
+              <h2>${element.name} - <abbr title="${abbrMeaning}">${element.age_rating}</abbr></h2>
           </header>
             <div class="wrapper">
               <div class="image-container">
@@ -409,10 +471,20 @@ movies.forEach(element => {
                   <button class="book-now">Book Now!</button>
               </div>
             </div>
+
+        ${musicElement}
       `;
       moviesInfoDiv.appendChild(movieDiv);
         }
   });
+
+
+  const audio = document.getElementById('bgm'); 
+  const muteButton = document.getElementById('muteBtn');
+  try {
+    audio.volume = 0.2;
+  } catch(error) {
+  }
 
     document.querySelector('.book-now').addEventListener('click', () => {
         movies.forEach(e => {
@@ -464,6 +536,7 @@ movies.forEach(element => {
 
     document.querySelector(".image-container").addEventListener("click", () => {
         const trailerContainer = document.getElementById('trailerContainer');
+        audio.muted = true;
         movies.forEach(movie => {
             if(movie.name.toLowerCase() === movieName.toLowerCase()) {
                 trailerContainer.innerHTML = `
@@ -479,7 +552,43 @@ movies.forEach(element => {
         document.getElementById('close-trailer').addEventListener('click', () => { 
             trailerContainer.style.display = 'none'; 
             trailerContainer.innerHTML = '';
+            audio.muted = false;
             }
     );
 }});
 });
+
+previous = document.getElementById('previous-button');
+previous.addEventListener('click', ()=> {
+    window.location.href = './movieLibrary.html';
+})
+
+try {
+muteButton.addEventListener('click', ()=> {
+    if(audio.muted) {
+        audio.muted = false;    
+        muteButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        muteButton.title = "Mute Song";
+    } else {
+        audio.muted = true;
+        muteButton.innerHTML = `<i class="fa-solid fa-volume-xmark">`;
+        muteButton.title = "Play Song"
+    }
+});
+}
+catch(error) {
+}
+
+document.body.addEventListener("keydown", (e)=> {
+    if(e.key === 'MediaPlayPause') {
+        if(audio.muted) {
+            audio.muted = false;    
+            muteButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+            muteButton.title = "Mute Song";
+        } else {
+            audio.muted = true;
+            muteButton.innerHTML = `<i class="fa-solid fa-volume-xmark">`;
+            muteButton.title = "Play Song"
+        }
+    }
+})

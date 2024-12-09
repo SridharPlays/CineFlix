@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>        
+            <a>NEWS</a>
+            <a>EVENTS</a>
+        </nav>
+        <img onclick="window.location.href = 'index.html'" src="./Images/Logos/1080x500logo.svg" alt="logo">
+    </header>
+    <div class="container">
+        <div class="image-container" id="gallery">
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    font-family: 'DM Sans', sans-serif;
+}
+header {
+    background-color: rgba(30, 41, 56, 0.75);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+header img {
+    width: 200px;
+}
+
+nav a {
+    cursor: pointer;
+    margin: 20px;
+    color: #ffffff;
+    font-weight: 900;
+    border-bottom: 2px solid transparent;
+    transition: .4s ease-in-out;
+}
+
+nav a:hover {
+    border-bottom: 2px solid rgb(81, 109, 149);
+}
+.container {
+    margin-top: 10px;
+    padding: 30px;
+}
+
+.container .image-container{
+    columns:3 250px;
+    gap:15px;
+}
+
+.container .image-container img{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+</style>
+
+<script>
+    const imageUrls = [
+        './Gallery/Image1.jpg',
+        './Gallery/Image2.jpg',
+        './Gallery/Image3.jpg',
+        './Gallery/Image4.webp',
+        './Gallery/Image5.jpg',
+        './Gallery/Image6.jpg',
+        './Gallery/Image7.jpg',
+        './Gallery/Image8.jpg',
+        './Gallery/Image9.jpeg',
+        './Gallery/Image10.jpg',
+        './Gallery/Image11.webp',
+        './Gallery/Image12.webp',
+        './Gallery/Image13.jpg',
+        './Gallery/Image14.webp',
+    ];
+
+function createImageGallery(urls) {
+    const gallery = document.getElementById('gallery');
+    for (let i = 0; i <urls.length; i++) {
+        const img = document.createElement('img');
+        img.src = urls[i];
+        img.alt = `Image ${i + 1}`;
+        img.loading = 'lazy';
+        gallery.appendChild(img);
+    }
+}
+
+createImageGallery(imageUrls);
+
+</script>

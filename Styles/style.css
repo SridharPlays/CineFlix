@@ -17,7 +17,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
+    padding: 20px 30px;
 }
 nav a {
     cursor: pointer;
@@ -38,6 +38,13 @@ header #login-btn {
     background-color: rgb(242, 163, 102);
     color: black;
 }
+header img {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(242, 163, 102);
+}
 .main-content {
     background: url('../Images/landing.png')no-repeat;
     background-position: top;
@@ -56,6 +63,15 @@ header #login-btn {
     color: rgb(242, 163, 102);
     font-size: 500%;
     font-weight: 900;
+}
+.main-content h6 {
+    color: rgb(193, 207, 227);
+    font-size: 180%;
+    line-height: 30px;
+    width: 80%;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 button {
     font-weight: 900;
@@ -282,4 +298,103 @@ footer .link-container ul li i {
 footer .link-container ul li:hover{
     color: rgb(10, 14, 19);
     background-color: rgb(242, 163, 102);
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        padding: 20px;
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    nav a {
+        margin: 10px 10px;
+    }
+    .main-content {
+        padding: 5%;
+        padding-bottom: 100px;
+        box-shadow: none;
+    }
+    .main-content p {
+        width: 100%;
+        font-size: 16px;
+    }
+    .main-content h2 {
+        font-size: 300%;
+    }
+    .explore-content {
+        padding: 5%;
+    }
+    .explore-content .flexbox {
+        flex-wrap: wrap;
+    }
+    .explore-content h1 {
+        font-size: 40px;
+    }
+    .explore-content .card {
+        padding: 100px;
+        margin: 10px 0;
+    }
+    .explore-content h2 {
+        font-size: 24px;
+        padding: 15%;
+    }
+    .newsletter {
+        padding: 5%;
+        flex-direction: column;
+    }
+    .newsletter h2 {
+        font-size: 48px;
+    }
+    .newsletter h4 {
+        font-size: 400%;
+        top: -25px;
+    }
+    .newsletter p {
+        font-size: 24px;
+        top: 100px;
+    }
+    .insider-info {
+        margin-right: 0;
+    }
+    .insider-form {
+        padding: 5%;
+        padding-top: 25px;
+    }
+    .insider-form input[type=email],
+    .insider-form input[type=submit] {
+        padding: 10px;
+        font-size: 16px;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    footer img {
+        width: 200px;
+    }
+    footer p {
+        text-align: center;
+    }
+    footer .info-container,
+    footer .link-container {
+        margin: 20px 0;
+    }
+    footer .info-container ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    footer .info-container ul li {
+        margin: 10px 0;
+    }
+    footer .link-container ul li {
+        width: 16%;
+        margin: 10px 10px;
+        gap: 20px;
+    }
 }

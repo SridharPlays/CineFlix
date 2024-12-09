@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="container">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div class="slide1">
+                    <img id="slide1" src="../MovieLargeBanner/Leo.jpg">
+                    <p>Naaanga Ready... Nenga Ready ahhh....?</p>
+                </div>
+                <div class="slide2">
+                    <img id="slide2" src="../MovieLargeBanner/Interstellar.jpg">
+                </div>
+                <div class="slide3">
+                    <img id="slide3" src="../MovieLargeBanner/PacificRim.jpg">
+                </div>
+                <div class="slide4">
+                    <img id="slide4" src="../MovieLargeBanner/Avatar2.jpg">
+                </div>
+            </div> 
+        <div class="slider-nav">
+            <a href="#slide1"></a>
+            <a href="#slide2"></a>
+            <a href="#slide3"></a>
+            <a href="#slide4"></a>
+        </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<style>
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+    .slide-wrapper {
+        position: relative;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+    .slider {
+        display: flex;
+        aspect-ratio: 16 / 9;
+        overflow-x: auto;    
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        box-shadow: 0 24px 48px -12px hsla(0,0,0,0.25);
+        border-radius: 8px;
+        position: relative;
+    }
+    .slider::-webkit-scrollbar {
+        appearance: none;
+        width: 0px;
+    }
+    .slider p { 
+        position: absolute; 
+        bottom: 10px; 
+        left: 10px; 
+        color: white; 
+        background: rgba(0, 0, 0, 0.5); 
+        padding: 5px 10px; 
+        border-radius: 5px; }
+    .slider img {
+        flex: 1 0 100%;
+        scroll-snap-align: start;
+        object-fit: contain;
+    }
+    .slider-nav {
+        display: flex;
+        column-gap: 16px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+    .slider-nav a {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #fff;
+        opacity: 0.75;
+        transition: opacity ease 250ms;
+    }
+    .slider-nav a:hover {
+        opacity: 1;
+    }
+</style>
