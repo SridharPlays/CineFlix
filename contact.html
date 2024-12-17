@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>        
+            <a href="index.html">HOME</a>
+            <a>EVENTS</a>
+        </nav>
+        <img src="./Images/Avatar.jpg" alt="Avatar" class="avatar">
+    </header>
+    <section class="py-5">
+        <div class="container-fluid p-lg-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6">
+                    <div class="col-lg-8 mx-auto">
+                        <span class="text-muted">Let's Talk</span>
+                        <h2 class="display-5 fw-bold">Contact Us</h2>
+                        <p class="lead">We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, our team is here to help. Please fill out the form below, and we'll get back to you as soon as possible.</p>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <input class="form-control bg-light" placeholder="Your name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <input class="form-control bg-light" placeholder="Your email" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <textarea class="form-control bg-light" placeholder="Your message" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="submit">Send message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div id="map"></div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+          
+</body>
+</html>
+
+<script>
+// Initialize the map with default options
+// Do not Modify
+    const mapOptions = {
+        center: [12.933013, 77.606309],
+        zoom: 15,
+    };
+    const map = L.map('map', mapOptions);
+    
+    // Add the base tile layer to the map
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: '©OpenStreetMap',
+    }).addTo(map);
+    
+
+
+    // Define custom icons for markers
+    // Main Icon of the Website
+    const customIcon = L.icon({
+        iconUrl: "../Images/Logos/1080x500logo.svg",
+        iconSize: [120, 120],
+    });
+
+    // Image Icon for the User, it maybe your face or any other pic of the user profile
+    const customIcon2 = L.icon({
+        iconUrl: "../Images/Avatar.jpg",
+        iconSize: [20, 20],
+    });
+    
+
+    // Add static locations with interactive markers and popups
+    // Follow the same pattern for all the loc
+    const locations = [
+        {
+            id: 1,
+            lat: 12.907968,
+            long: 77.601305 ,
+            src: '../Images/Logos/1080x500logo.svg',
+            title: "CINEFLIX Cinemas",
+            url: "index.html",
+        },
+    ];
+    
+
+    // Inbuilt operations, Dont Modify
+    const popupOptions = {
+        closeButton: false,
+    };
+    
+    // Iterate through the locations and add markers
+    locations.forEach((location) => {
+        L.marker([location.lat, location.long], { icon: customIcon })
+            .addTo(map)
+            .on('mouseover', (event) => {
+                event.target
+                    .bindPopup(
+                        `<div class="card">
+                            <img src="${location.src}" width="180" height="80" alt="${location.title}">
+                            <h3>${location.title}</h3>
+                        </div>`,
+                        popupOptions
+                    )
+                    .openPopup();
+            })
+            .on('mouseout', (event) => {
+                event.target.closePopup();
+            })
+            .on('click', () => {
+                if (location.url) {
+                    window.open(location.url);
+                }
+            });
+    });
+    
+    // Handle user geolocation
+    let marker, circle, isZoomed = false;
+    
+    navigator.geolocation.watchPosition(onLocationFound, onLocationError); // onLocationFound is called when the geolocation works perfectly, or else onLocationError Function will be called;
+    
+
+    // Function called when geolocation is successful
+    function onLocationFound(position) {
+        const { latitude: lat, longitude: lng, accuracy } = position.coords;
+    
+        // Remove existing marker and circle
+        if (marker) {
+            map.removeLayer(marker);
+            map.removeLayer(circle);
+        }
+    
+        // Add a new marker and circle to show user's location
+        marker = L.marker([lat, lng], { icon: customIcon2 }).addTo(map);
+        circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+    
+        // Bind a popup to the user's location marker
+        // Add the username
+        marker.bindPopup("Sridhar N").openPopup();
+    
+        // Add a popup for user's location
+        L.popup()
+            .setLatLng([lat, lng])
+            .setContent("<p>You are here</p>")
+            .openOn(map);
+    
+        // Fit the map view to the user's accuracy circle
+        if (!isZoomed) {
+            isZoomed = true;
+            map.fitBounds(circle.getBounds());
+        }
+    
+        // Center the map on the user's location
+        map.setView([lat, lng], 15); // Adjust the zoom level as needed
+    }
+    
+    // Function called when geolocation fails
+    function onLocationError(error) {
+        if (error.code === 1) {
+            alert("Please allow geolocation access");
+        } else {
+            alert("Cannot get current location");
+        }
+    }
+</script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans',serif;
+    color: white;
+    background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
+}
+
+header {
+    background-color: rgb(30, 41, 56);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+nav a {
+    cursor: pointer;
+    margin: 20px;
+    color: #fff;
+    font-weight: 900;
+    border-bottom: 2px solid transparent;
+    transition: .4s ease-in-out;
+    text-decoration: none;
+}
+nav a:hover {
+    border-bottom: 2px solid rgb(81, 109, 149);
+}
+header img {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(242, 163, 102);
+}
+#map { 
+    height: 70vh;
+    width: 90%;
+}
+</style>

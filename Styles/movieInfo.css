@@ -268,4 +268,13 @@ input[type=radio]:checked + label{
         width: 10%;
         font-size: 24px;
     }
+    .card .mute-button {
+        top: 1%;
+        right: 5%;
+    }
+    .card #previous-button {
+        top: 1%;
+        left: 5%;
+    }
+
 }

@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100vh;
+    display: grid;
+    font-family: "Staatliches", cursive;
+    background: #d83565 !important;
+    color: black;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+/* Download Btn */
+#downloadButton {
+    padding: 10px 20px;
+    font-size: 36px;
+    color: #fff;
+    background-color: #ff004c;
+    font-family: 'Poppins',sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.ticket {
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 10px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.left {
+    display: flex;
+}
+
+.image {
+    height: 450px;
+    width: 300px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    position: relative;
+}
+
+.left .ticket-number {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    bottom: -29%;
+    right: -23%;
+}
+
+.ticket-info {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.date span {
+    width: 180px;
+}
+
+.date span:first-child {
+    text-align: left;
+}
+
+.date span:last-child {
+    text-align: right;
+}
+
+.date .date-info {
+    color: #d83565;
+    font-size: 20px;
+}
+
+.show-name {
+    font-size: 32px;
+    font-family: "Poppins",sans-serif;
+    color: #d83565;
+}
+
+.show-name h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #4a437e;
+}
+
+.show-name p {
+    font-size:22px;
+}
+
+.main-time {
+    padding: 10px 0;
+    color: #4a437e;
+    text-align: center;
+    display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	flex-direction: row;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.right .time {
+    padding: 10px 0;
+    color: #4a437e;
+    text-align: center;
+    display: flex;
+	flex-direction: column;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.time span {
+    font-weight: 700;
+    color: gray;
+}
+
+.left .time {
+    font-size: 16px;
+}
+
+
+.location {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid gray;
+}
+
+.location .separator {
+    font-size: 20px;
+}
+
+.right {
+    width: 200px;
+    border-left: 1px dashed #404040;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.cineflix {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    color: darkgray;
+    height: fit-content;
+    padding: 0 10px;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: space-around;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    white-space: nowrap;
+    max-height: 94%; 
+    overflow: hidden;
+}
+
+.right .cineflix {
+    color: darkgray;
+}
+
+.right .cineflix span:nth-child(odd) {
+    color: gray;
+}
+
+.right .right-info-container {
+    height: 250px;
+    padding: 10px 10px 10px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.right .show-name h1 {
+    font-size: 18px;
+}
+
+.barcode {
+    height: 150px;
+}
+
+.barcode img {
+    height: 100%;
+}
+
+.right .ticket-number {
+    color: gray;
+	font-size: 20px;
+}
+
+.print-btn {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    background-color: #4a437e;
+    outline: none;
+    border: none;
+    margin: auto;
+    font-family: 'Poppins',sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;             
+        print-color-adjust: exact !important;
+        
+    }
+    body {
+        background-color: white !important;
+    }
+
+    .print-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 30px;
+        width: 50%;
+        height: 100px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .ticket {
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+
+    .image {
+        height: auto;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .right {
+        width: 100%;
+        border-top: 1px dashed #404040;
+        border-left: none;
+        flex-direction: row;
+    }
+
+    .right .right-info-container {
+        padding: 10px;
+    }
+
+    .main-time {
+        flex-direction: row;
+    }
+    .cineflix {
+            display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .show-name h1 {
+        font-size: 24px;
+    }
+
+    .show-name p {
+        font-size: 16px;
+    }
+
+    .date .date-info {
+        font-size: 16px;
+    }
+
+    .main-time {
+        font-size: 14px;
+    }
+
+    .right .ticket-number {
+        font-size: 16px;
+    }
+}

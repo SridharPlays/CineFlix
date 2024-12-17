@@ -3,36 +3,6 @@ let dayInfo = document.getElementById('showDayInfo');
 let dateInfo = document.getElementById('showDateInfo');
 let movieInfo = document.getElementById('movieInfo');
 let timeInfo = document.getElementById('showTimeInfo');
-const ScreenInfo = [
-    {
-        name: "IMAX",
-        audi: 1,
-        capacity: 280,
-        rows: 20
-        // features: ["3D", "Dolby Atmos", "Recliner Seats"]
-    },
-    {
-        name: "IMAX",
-        audi: 2,
-        capacity: 300,
-        rows: 20
-        // features: ["3D", "Dolby Atmos", "Recliner Seats"]
-    },
-    {
-        name: "4DX",
-        audi: 3,
-        capacity: 100,
-        rows: 10
-        // features: ["Motion Seats", "Wind Effects", "Water Sprays"]
-    },
-    {
-        name: "Standard 2D",
-        audi: 4,
-        capacity: 440,
-        rows: 15
-        // features: ["2D", "Surround Sound"]
-    }
-];
 
 const urlParams = new URLSearchParams(window.location.search);
 const movieName = urlParams.get('movie'); 
@@ -93,6 +63,8 @@ bookedSeats.forEach(seat => {
 
 let tickets = seats.querySelectorAll("input");
 let ticketsBooked = [];
+let amount = document.querySelector(".amount").innerHTML;
+let count = document.querySelector(".count").innerHTML;
 document.getElementById('seatsBooked').innerHTML = 'Seats:' + ticketsBooked.join(', ');
 tickets.forEach((ticket) => {
     ticket.addEventListener("change", (event) => {
@@ -102,8 +74,6 @@ tickets.forEach((ticket) => {
             return;
         }
 
-        let amount = document.querySelector(".amount").innerHTML;
-        let count = document.querySelector(".count").innerHTML;
         amount = Number(amount);
         count = Number(count);
 
@@ -175,8 +145,13 @@ function updateDates() {
         label.appendChild(dayDiv);
         label.appendChild(dateDiv);
 
+        if(i === 0 ) {
+            dateInfo.textContent = `${day}, ${month} ${dateNumber}`;
+        }
+
         datesContainer.appendChild(input);
         datesContainer.appendChild(label);
+        
 
         // Add event listener to update dateInfo and dayInfo
         input.addEventListener('change', () => {
@@ -231,6 +206,10 @@ function updateTimes() {
         label.className = 'time';
         label.htmlFor = `t${index + 1}`;
         label.innerText = timeString;
+        
+        if(index === 0) {
+            timeInfo.textContent = timeString;
+        }
 
         timesContainer.appendChild(input);
         timesContainer.appendChild(label);
@@ -244,3 +223,9 @@ function updateTimes() {
 // Call the functions to update the dates and times
 updateDates();
 updateTimes();
+
+// go to ticket page
+const bookButton = document.getElementById('book');
+bookButton.addEventListener('click', () => {
+            window.location.href = `ticket.html?movie=${encodeURIComponent(movieName)}&lang=${encodeURIComponent(movieLang)}&seats=${encodeURIComponent(ticketsBooked)}&price=${encodeURIComponent(document.querySelector(".amount").innerHTML)}&time=${encodeURIComponent(timeInfo.textContent)}&day=${encodeURIComponent(dateInfo.textContent)}`;
+});

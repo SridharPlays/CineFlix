@@ -226,23 +226,28 @@ const genreList = [
 
 // Loading all the Movies Dynamically
 let moviesDiv = document.getElementById('movies');
-movies.forEach(element => {
+
+function loadMovie(element) {
+    let format = element.format.split(',').join(" • ");
     let div = document.createElement('div');
     div.className = 'movie';
     div.innerHTML = `
         <img src="MovieBanner/${element.image_loc}">
         <h1>${element.name}</h1> 
         <p>${element.language}</p> 
-        <p>${element.format}</p>
+        <p>${format}</p>
         `;
     moviesDiv.appendChild(div);
-});
+}
+
+
+movies.forEach(element => loadMovie(element));
 
 // Loading Languages Options
 let i = 0;
 let languageDiv = document.getElementById('languageOptions');
 languageList.forEach((language)=> {
-    languageHTML = document.createElement('div');
+    let languageHTML = document.createElement('div');
     languageHTML.className = "option";
     if(i === 0 ) {
     languageChecked = 'checked';
@@ -261,7 +266,7 @@ languageList.forEach((language)=> {
 i = 0;
 let formatDiv = document.getElementById('formatOptions');
 formatList.forEach((format)=> {
-    formatHTML = document.createElement('div');
+    let formatHTML = document.createElement('div');
     formatHTML.className = "option";
     if(i === 0 ) {
     formatChecked = 'checked';
@@ -315,16 +320,7 @@ function filterMovies() {
         const genreMatch = selectedGenre === '' || movie.genre.includes(selectedGenre);
 
         if (languageMatch && formatMatch && genreMatch) {
-            const div = document.createElement('div');
-            let format = movie.format.split(",");
-            div.className = 'movie';
-            div.innerHTML = `
-                <img src="MovieBanner/${movie.image_loc}" alt="${movie.name} Poster">
-                <h1>${movie.name}</h1>
-                <p>${movie.language}</p>
-                <p>${format[0]} ${format[1] ? `• ${format[1]}` : ""} ${format[2] ? `• ${format[2]}` : ""}  ${format[3] ? `• ${format[3]}` : ""}  ${format[4] ? `• ${format[4]}` : ""}  ${format[5] ? `• ${format[5]}` : ""}</p>
-                <p>${movie.genre}</p>`
-            moviesDiv.appendChild(div);
+            loadMovie(movie);
             movieFound = true;
         }
     });
@@ -353,7 +349,7 @@ moviesDiv.addEventListener('click', (event) => {
     }
 });
 
-
+// Reset Button
 let resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click', () => {
     document.getElementById('language0').checked = true;
@@ -361,6 +357,7 @@ resetBtn.addEventListener('click', () => {
     document.getElementById('format0').checked = true;
     filterMovies();
 });
+
 
 // Search Functionality
 let searchButton = document.getElementById('search-query');
@@ -372,35 +369,30 @@ searchButton.addEventListener('keydown', function(e) {
         movies.forEach((movie) => {
             if (MovieName === movie.name.toLowerCase() || movie.name.toLowerCase().includes(MovieName) && MovieName.length > 1) {
                 moviesDiv.innerHTML = '';
-                let div = document.createElement('div');
-                div.className = 'movie';
-                div.innerHTML = `
-                    <img src="MovieBanner/${movie.image_loc}" alt="${movie.name}">
-                    <h1>${movie.name}</h1>
-                    <p>${movie.language}</p>
-                    <p>${movie.format}</p>
-                `;
-                moviesDiv.appendChild(div);
+                loadMovie(movie);
                 movieFound = true;
                 showToast('success')
             }
         });
-        if (!movieFound) {
-            showToast('error');
-        }
-    };
+            if (!movieFound) {
+                showToast('error');
+            }
+        };
     }
 });
 
+
 // Search Cancel Button
-searchInput.addEventListener('input', function(e) {
+searchButton.addEventListener('input', function(e) {
     if (this.value === '') {
         filterMovies();
     }
 });
 
+
+// Toast Functionality
 function showToast(type) {
-    var toast;
+    let toast;
     if (type === 'success') {
         toast = document.getElementById("toast");
     } else if (type === 'error') {
@@ -413,15 +405,11 @@ function showToast(type) {
 }
 
 document.getElementById('close-btn').addEventListener("click", () => {
-    var toast = document.getElementById("toast");
+    let toast = document.getElementById("toast");
     toast.className = toast.className.replace("show", "");
 });
 
 document.querySelector('.error__close').addEventListener("click", () => {
-    var toast = document.getElementById("error-toast");
+    let toast = document.getElementById("error-toast");
     toast.className = toast.className.replace("show", "");
 });
-
-
-
-filterMovies();

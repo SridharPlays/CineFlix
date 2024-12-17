@@ -1,56 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CINEFLIX - About</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <link rel="stylesheet" href="./Styles/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="  crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./Styles/style.css">
+  </head>
+  <body>
     <header>
-        <nav>        
-            <a>NEWS</a>
-            <a>EVENTS</a>
-        </nav>
-        <a id="login-btn" href="signup.html">Login</a>
+      <nav>
+        <a>NEWS</a>
+        <a>EVENTS</a>
+      </nav>
+      <a id="login-btn" href="signup.html">Login</a>
     </header>
     <section class="main-content">
-        <h2>ABOUT</h2>
-        <h6>We celebrate and connect audiences to the best in movies and games, showcasing creativity, innovation, and unforgettable experiences.</h6>
-        <p>We unite movie enthusiasts, avid gamers, and passionate storytellers to celebrate the magic of cinematic and gaming experiences. Our platform serves as a gateway to immersive adventures, where creativity, innovation, and the art of storytelling take center stage.</p>
-        <p>We are dedicated to connecting audiences with their favorite films and games, recognizing those who enrich the community through exceptional content and fostering voices that define the future of entertainment.</p>
+      <h2>ABOUT</h2>
+      <h6>
+        We celebrate and connect audiences to the best in movies and games,
+        showcasing creativity, innovation, and unforgettable experiences.
+      </h6>
+      <p>
+        We unite movie enthusiasts, avid gamers, and passionate storytellers to
+        celebrate the magic of cinematic and gaming experiences. Our platform
+        serves as a gateway to immersive adventures, where creativity,
+        innovation, and the art of storytelling take center stage.
+      </p>
+      <p>
+        We are dedicated to connecting audiences with their favorite films and
+        games, recognizing those who enrich the community through exceptional
+        content and fostering voices that define the future of entertainment.
+      </p>
     </section>
+    <section class="contact-us">
+      <div class="contact-info">
+        <h2>CONTACT US</h2>
+        <p>
+          If you have any questions or requests, please rEach out via email or
+          follow us on social channels.
+        </p>
+      </div>
+      <div class="contact-info-box">
+        <div class="box">
+          <h3>Regarding Complaints</h3>
+          <button class="button">COMPLAINTS@CINEFLIX.COM</button>
+        </div>
+        <div class="box">
+          <h3>Regarding Sponsership or Partnership</h3>
+          <button>INFO@CINEFLIX.COM</button>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .contact-us {
+        padding: 10% 1%;
+        background-color: rgb(242, 163, 102);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: default;
+      }
+      .contact-us h2 {
+        font-size: 88px;
+        color: rgb(10, 14, 19);
+        font-weight: 900;
+      }
+      .contact-us p {
+        position: absolute;
+        top: 100px;
+        left: 0px;
+        font-size: 22px;
+        color: rgb(10, 14, 19);
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+      .contact-info {
+        margin-right: 10%;
+        position: relative;
+      }
+      .contact-info-box {
+        padding: 10%;
+        padding-top: 50px;
+      }
+      .contact-info-box .box h3 {
+        font-size: 32px;
+        color: rgb(10, 14, 19);
+        font-weight: 900;
+      }
+      .contact-info-box .box .button {
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-weight: 200;
+    position: relative;
+    color: white;
+    /* background: linear-gradient(to right, darkblue, darkorchid); Apply gradient directly to the button */
+    z-index: 1;
+}
+
+.contact-info-box .box .button::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 10px;
+    background: transparent; /* No background */
+    border: 2px solid transparent; /* Make the border initially transparent */
+    background-clip: border-box; /* Ensure the border follows the background */
+    background: linear-gradient(to right, darkblue, darkorchid); /* Apply gradient to border */
+    z-index: -1; /* Keep it behind the button */
+}
+
+    </style>
+
     <footer>
-        <div class="info-container">
-            <img src="./Images/Logos/1080x500logo.svg">
-            <ul>
-                <li><a style="text-decoration: none; color: inherit;" href="./index.html">HOME</a></li>
-                <li><a>PRIVACY POLICY</a></li>
-                <li><a>TERMS</a></li>
-                <li><a>CONTACT</a></li>
-                <li><a style="color: inherit; text-decoration: none;" href="./gallery.html">GALLERY</a></li>
-                <li><a style="color: inherit; text-decoration: none;" href="./subscription.html"    >SUBSCRIPTIONS</a></li>
-                <li><a>SUPPORT</a></li>
-            </ul>
-            <p>© 2024, CINEFLIX</p>
-        </div>
-        <div class="link-container">
-            <h2>Follow Us</h2>
-            <ul>
-                <li><a><i class="fa-brands fa-youtube"></i></a></li>
-                <li><a><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a><i class="fa-brands fa-tiktok"></i></a></li>
-                <li><a><i class="fa-brands fa-x-twitter"></i></a></li>
-                <li><a><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a><i class="fa-brands fa-discord"></i></a></li>
-                <li><a><i class="fa-brands fa-twitch"></i></a></li>
-                <li><a><i class="fa-solid fa-envelope"></i></a></li>
-            </ul>
-        </div>
+      <div class="info-container">
+        <img src="./Images/Logos/1080x500logo.svg" />
+        <ul>
+          <li>
+            <a style="text-decoration: none; color: inherit" href="./index.html"
+              >HOME</a
+            >
+          </li>
+          <li><a>PRIVACY POLICY</a></li>
+          <li><a>TERMS</a></li>
+          <li><a>CONTACT</a></li>
+          <li><a style="color: inherit; text-decoration: none" href="./gallery.html">GALLERY</a></li>
+          <li>
+            <a
+              style="color: inherit; text-decoration: none"
+              href="./subscription.html"
+              >SUBSCRIPTIONS</a
+            >
+          </li>
+          <li><a>SUPPORT</a></li>
+        </ul>
+        <p>© 2024, CINEFLIX</p>
+      </div>
+      <div class="link-container">
+        <h2>Follow Us</h2>
+        <ul>
+          <li>
+            <a><i class="fa-brands fa-youtube"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-instagram"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-tiktok"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-x-twitter"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-facebook"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-discord"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-brands fa-twitch"></i></a>
+          </li>
+          <li>
+            <a><i class="fa-solid fa-envelope"></i></a>
+          </li>
+        </ul>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

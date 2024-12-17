@@ -26,6 +26,7 @@ nav a {
     font-weight: 900;
     border-bottom: 2px solid transparent;
     transition: .4s ease-in-out;
+    text-decoration: none;
 }
 nav a:hover {
     border-bottom: 2px solid rgb(81, 109, 149);
@@ -157,7 +158,7 @@ button {
     font-size: 32px;
     position: absolute;
     width: 100%;
-    padding: 19.15%;
+    padding: 19.1%;
     border-radius: 10px;
     top: 0;
     left: 0;
@@ -268,6 +269,10 @@ footer .info-container ul li:hover {
     color: #fff;
     border-bottom: #fff 1px solid;
 }
+footer .info-container ul li a {
+    color: inherit; 
+    text-decoration: none;
+}
 footer .link-container h2 {
     color: rgb(242, 163, 102);
     font-size: 28px;
@@ -290,6 +295,11 @@ footer .link-container ul li {
     border-radius: 10px;
     cursor: pointer;
     transition: .4s ease-in-out;
+    color: inherit;
+}
+footer .link-container ul li a {
+    text-decoration: none;
+    color: inherit;
 }
 footer .link-container ul li i {
     font-size: 20px;
