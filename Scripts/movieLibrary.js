@@ -88,7 +88,7 @@ const movies = [{
     genre: "Animation, Adventure, Comedy, Sport" 
 }, 
 { 
-    name: "Mission Impossible", 
+    name: "Mission: Impossible - The Final Reckoning", 
     image_loc: "MissionImpossible.jpg", 
     language: "English", 
     format: "IMAX 3D, 4DX, 2D", 
