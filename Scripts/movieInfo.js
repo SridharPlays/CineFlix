@@ -458,7 +458,7 @@ movies.forEach(element => {
           </header>
             <div class="wrapper">
               <div class="image-container">
-                  <img src="../MovieBanner/${element.image_loc}" alt="${element.name}">
+                  <img src="./MovieBanner/${element.image_loc}" alt="${element.name}">
               </div>
               <div class="content">
                   <p id="languageValue">Languages: ${element.language}</p>
