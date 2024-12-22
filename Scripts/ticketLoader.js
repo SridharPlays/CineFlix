@@ -271,7 +271,7 @@ const movies = [{
 
 
     const element = document.getElementById('image');
-    element.style.backgroundImage = `url('../MovieBanner/${movieImageLoc}')`;
+    element.style.backgroundImage = `url('./MovieBanner/${movieImageLoc}')`;
 
 
     	
@@ -292,7 +292,7 @@ const movies = [{
 
         // Image Section
         const img = new Image();
-        img.src = `../MovieBanner/${movieImageLoc}`; // Replace with your image URL
+        img.src = `./MovieBanner/${movieImageLoc}`; 
         img.onload = () => {
             ctx.drawImage(img, 0, 0, 250, canvas.height);
 
