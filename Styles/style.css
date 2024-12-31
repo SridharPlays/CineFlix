@@ -11,41 +11,6 @@ body {
 ::selection {
     background-color: rgba(242, 163, 102,0.6);
 }
-header {
-    background-color: rgba(30, 41, 56,0.75);
-    backdrop-filter: blur(15px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 30px;
-}
-nav a {
-    cursor: pointer;
-    margin: 20px;
-    color: #fff;
-    font-weight: 900;
-    border-bottom: 2px solid transparent;
-    transition: .4s ease-in-out;
-    text-decoration: none;
-}
-nav a:hover {
-    border-bottom: 2px solid rgb(81, 109, 149);
-}
-header #login-btn {
-    text-decoration: none;
-    border: 2px solid #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: rgb(242, 163, 102);
-    color: black;
-}
-header img {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgb(242, 163, 102);
-}
 .main-content {
     background: url('../Images/landing.png')no-repeat;
     background-position: top;
@@ -121,6 +86,7 @@ button {
     padding: 10%;
     background-color: rgba(0, 0, 0, 0.89);
     cursor: default;
+    
 }
 .explore-content h1 {
     color: rgb(242, 163, 102);
@@ -146,29 +112,51 @@ button {
     cursor: pointer;
     position: relative;
     transition: .4s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .explore-content .card:last-child {
     background: url('../Images/oppenheimer.jpg');
     background-position: center;
     background-size: cover;
 }
-.explore-content h2 {
-    text-align: center;
-    color: #fff;
-    font-size: 32px;
+  
+.card::before,
+.card::after {
     position: absolute;
+    content: "";
     width: 100%;
-    padding: 19.1%;
-    border-radius: 10px;
-    top: 0;
-    left: 0;
-    transition: .2s ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.838);
+    transition: all 0.5s;
     opacity: 0;
-}
-.explore-content .card:hover h2{
-    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Change the width and height to full, covering the entire card */
+.card:hover::before,
+.card:hover:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: all 0.1s;
+  }
+  
+  /* First Child */
+.card:hover:after {
+    content: "2024 Best Game Awards";
     opacity: 1;
-}
+  }
+  /* Second CHild */
+.card:last-child:hover:after {
+    content: "2024 Best Movie Awards";
+    opacity: 1;
+  }
 .newsletter {
     padding: 10%;
     background-color: rgb(20, 27, 37);
@@ -296,6 +284,9 @@ footer .link-container ul li {
     cursor: pointer;
     transition: .4s ease-in-out;
     color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 footer .link-container ul li a {
     text-decoration: none;

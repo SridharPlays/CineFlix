@@ -11,30 +11,6 @@ body {
     --sb-track-color: #101010;
     --sb-size: 4px;
 }
-header {
-    background-color: rgba(30, 41, 56, 0.75);
-    backdrop-filter: blur(15px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 30px;
-}
-header img {
-    width: 200px;
-}
-
-nav a {
-    cursor: pointer;
-    margin: 20px;
-    color: #ffffff;
-    font-weight: 900;
-    border-bottom: 2px solid transparent;
-    transition: .4s ease-in-out;
-}
-
-nav a:hover {
-    border-bottom: 2px solid rgb(81, 109, 149);
-}
 aside {
     float: left;
     color: white;

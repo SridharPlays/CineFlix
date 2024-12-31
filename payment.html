@@ -9,111 +9,110 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-900">
     <header>
-        <nav>        
+        <nav>
             <a href="index.html">HOME</a>
         </nav>
-        <img src="./Images/Avatar.jpg" alt="Avatar" class="avatar">
+        <img src="./Images/Avatar.jpg" alt="Avatar">
     </header>
 
-    <div class="container">
-        <form action="">
-            <div class="row">
-                <div class="column">
-                    <h3 class="title">Payment</h3>
-                    <div class="input-box" id="cards">
-                        <span>Cards Accepted :</span>
-                        <img src="./Images/Logos/mastercard.svg" alt="">
-                        <img src="./Images/Logos/apple-pay.svg" alt="">
-                        <img src="./Images/Logos/amex.svg" alt="">
-                        <img src="./Images/Logos/visa.svg" alt="">
-                    </div>
-                    <div class="input-box">
-                        <span>Name On Card :</span>
-                        <input type="text" placeholder="Tom Cruise">
-                    </div>
-                    <div class="input-box">
-                        <span>Credit Card Number :</span>
-                        <input type="number" placeholder="XXXX XXXX XXXX XXXX">
-                    </div>
-                    <div class="input-box">
-                        <span>Exp. Month :</span>
-                        <input type="text" placeholder="August">
-                    </div>
-                
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>Exp. Year :</span>
-                            <input type="number" placeholder="2025">
-                        </div>
-                        <div class="input-box">
-                            <span>CVV :</span>
-                            <input type="number" placeholder="123">
+    <div class="flex justify-center items-center min-h-screen bg-gray-900">
+        <form class="w-full h-full p-12 bg-white">
+            <div class="flex gap-12 flex-wrap">
+                <div class="flex-1  min-w-[250px]">
+                    <h3 class="text-lg text-gray-900 font-bold mb-2 uppercase">Payment</h3>
+                    <div id="cards" class="mb-3">
+                        <span class="block mb-2">Cards Accepted :</span>
+                        <div class="flex gap-5">
+                            <img src="./Images/Logos/mastercard.svg" alt="" class="h-16 shadow-lg">
+                            <img src="./Images/Logos/apple-pay.svg" alt="" class="h-16">
+                            <img src="./Images/Logos/amex.svg" alt="" class="h-16">
+                            <img src="./Images/Logos/visa.svg" alt="" class="h-16">
                         </div>
                     </div>
-                    <button type="submit" class="btn">Submit</button>
-                </div>
-                <div class="column">
-                    <h3 class="title">Booking Summary</h3>
-                    <div class="movie-summary">
-                        <img class="movie-poster" src="./MovieBanner/Leo.jpg" alt="">
-                        <div class="movie-info">
-                            <h3>LEO</h3>
-                            <span>U • Action • Tamil </span>
-                            <span>Sun, 22 Dec, 9:15 PM - 11:55PM </span>
-                            <span>Cineflix Director's Cuts, Bannerghatta, Bengaluru</span>
-                        </div>
+                    <div class="mb-4">
+                        <span class="block mb-2">Name On Card :</span>
+                        <input type="text" placeholder="Tom Cruise" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
                     </div>
-                    <hr>
-                    <h4>Seat Info</h4>
-                    <span>PRIME</span>
-                    <span>C4</span>
-                    <hr>
-                    <h4>TICKETS</h4>
-                    <span>3 X 270 </span><span>$280</span>
+                    <div class="mb-4">
+                        <span class="block mb-2">Credit Card Number :</span>
+                        <input type="number" placeholder="XXXX XXXX XXXX XXXX" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <span class="block mb-2">Exp. Month :</span>
+                        <input type="text" placeholder="August" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
+                    </div>
 
-                    <details>
-                        <summary>Conv Fees</summary>
-                            <span>200</span>
+                    <div class="flex gap-6">
+                        <div class="mb-4 flex-1">
+                            <span class="block mb-2">Exp. Year :</span>
+                            <input type="number" placeholder="2025" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
+                        </div>
+                        <div class="mb-4 flex-1">
+                            <span class="block mb-2">CVV :</span>
+                            <input type="number" placeholder="123" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-5">
+                        <button type="submit" class="w-1/2 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-800 transition-all duration-300">Cancel</button>
+                        <button type="submit" class="w-1/2 py-3 bg-blue-500 text-w2hite rounded-lg font-semibold hover:bg-blue-600 transition-all duration-300 ml-2">Submit</button>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-[250px]">
+                    <h3 class="text-lg text-gray-700 font-bold mb-5 uppercase">Booking Summary</h3>
+                    <div class="flex mb-5">
+                        <img class="w-1/5 h-auto mr-5" src="./MovieBanner/Leo.jpg" alt="Movie Poster">
+                        <div class="flex flex-col">
+                            <h3 class="text-2xl font-bold">LEO</h3>
+                            <span class="text-lg">U • Action • Tamil</span>
+                            <span class="text-lg">Sun, 22 Dec, 9:15 PM - 11:55PM</span>
+                            <span class="text-lg">Cineflix Director's Cuts, Bannerghatta, Bengaluru</span>
+                        </div>
+                    </div>
+                    <hr class="border-gray-300 mb-4">
+                    <h4 class="text-lg font-semibold">Seat Info</h4>
+                    <span class="text-sm">PRIME</span>
+                    <span class="text-sm">C4</span>
+                    <hr class="border-gray-300 my-4">
+                    <h4 class="text-lg font-semibold">TICKETS</h4>
+                    <p class="text-sm">3 X 270 <span class="float-right">$280</span></p>
+                    <hr class="border-gray-300 my-4">
+                    <h4 class="text-lg font-semibold">PAYMENT DETAILS</h4>
+                    <p class="text-sm">Sub Total <span class="float-right">$280</span></p>
+                    <details class="text-sm">
+                        <summary>Taxs & Fees</summary>
+                        <p>Convience Fees <span class="float-right">$280</span></p>
+                        <p>GST Fees <span class="float-right">$280</span></p>
                     </details>
-
-                    <h4>Grand Total</h4>
-                    <span>$2000</span>
-
+                    <hr class="border-gray-300 my-4">
+                    <h4 class="text-lg font-semibold">Grand Total</h4>
+                    <span class="text-xl font-semibold">$2000</span>
                 </div>
-
             </div>
-
         </form>
     </div>
-
 </body>
 
 </html>
 
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
-header {
-    font-family: 'DM Sans',sans-serif;
-    background-color: rgb(30, 41, 56);
-    border-bottom: 2px solid white;
+<style>
+    header {
+    background-color: rgba(30, 41, 56,0.75);
+    backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 30px;
+    font-family: 'DM Sans',sans-serif;
 }
 nav a {
     cursor: pointer;
-    font-family: 'DM Sans',sans-serif;
     margin: 20px;
     color: #fff;
     font-weight: 900;
@@ -138,115 +137,5 @@ header img {
     height: 50px;
     border-radius: 50%;
     border: 2px solid rgb(242, 163, 102);
-}
-
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background:rgb(10, 14, 19);
-    padding: 25px;
-}
-
-.container form {
-    width: 1200px;
-    padding: 40px;
-    background: #fff;
-    border-radius: 10px;
-}
-
-form .row {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.row .column {
-    flex: 1 1 250px;
-}
-
-.movie-summary {
-    display: flex;
-}
-
-.movie-info {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-
-#cards {
-    margin-bottom: 0;
-}
-
-#cards span {
-    margin-bottom: 2px;
-}
-#cards img {
-    margin-right: 20px;
-}
-
-.movie-poster {
-    width: 20%;
-}
-
-.column .title {
-    font-size: 20px;
-    color: #333;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.column .input-box {
-    margin: 15px 0;
-}
-
-.input-box span {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-}
-
-
-.column .flex {
-    display: flex;
-    gap: 15px;
-}
-
-.flex .input-box {
-    margin-top: 5px;
-}
-
-.input-box img {
-    height: 60px;
-    filter: drop-shadow(0 0 1px #000);
-}
-
-
-form .btn {
-    width: 100%;
-    padding: 12px;
-    background: #8175d3;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    font-size: 17px;
-    color: #fff;
-    margin-top: 5px;
-    cursor: pointer;
-    transition: .5s;
-}
-
-form .btn:hover {
-    background: #6a5acd;
 }
 </style>

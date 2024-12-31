@@ -1,0 +1,39 @@
+.navigation {
+    background-color: rgba(30, 41, 56,0.75);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+/* nav a {
+    cursor: pointer;
+    margin: 20px;
+    color: #fff;
+    font-weight: 900;
+    border-bottom: 2px solid transparent;
+    transition: .4s ease-in-out;
+    text-decoration: none;
+}
+nav a:hover {
+    border-bottom: 2px solid rgb(81, 109, 149);
+} */
+.navigation #login-btn {
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgb(242, 163, 102);
+    color: black;
+}
+.navigation img {
+    width: 120px;
+    display: inline-block;
+}
+.navigation .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(242, 163, 102);
+}

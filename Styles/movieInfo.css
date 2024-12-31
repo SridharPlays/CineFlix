@@ -1,21 +1,17 @@
 body {
     background: #10192d;
     color: #8f9db2;
-    display: grid;
-    place-items: center;
     margin: 0;
     height: 100vh;
     font-family: "Poppins", sans-serif;
 }
 .card {
     background: #17223c;
-    border-radius: 16px;
     border: 1px solid rgb(255 255 255 / 10%);
-    padding: 20px;
+    padding: 10px 30px 60px 30px;
     font-size: 12px;
-    width: 80%;
-    max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 .card abbr {
     text-decoration: none;
@@ -23,18 +19,24 @@ body {
 .card header {
     color: #e0e0e0;
     border-bottom: 1px solid rgb(255 255 255 / 8%);
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    background: inherit;
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 20px;
     cursor: pointer;
 }
 .card h2 {
     font-size: 28px;
     font-weight: 500;
     margin: 0;
+
+    margin-left: 90px;
 }
 .card p {
     font-size: 18px;
     line-height: 1.5;
+}
+.story {
+    width: 80%;
 }
 .card .wrapper {
     display: flex;
@@ -43,10 +45,11 @@ body {
     align-items: flex-start;
     gap: 20px;
     margin-top: 10px;
+    margin-left: 20px;
 }
 .card img {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     border-radius: 10px;
     object-fit: cover;
     cursor: pointer;
@@ -55,13 +58,13 @@ body {
     flex: 1;
 }
 .card button {
-    background-color: rgba(100,77,237,0.08);
-    padding: 12px 24px;
+    padding: 20px 24px;
     outline: none;
     border: none;
     border-radius: 8px;
-    width: 40%;
-    color: white;
+    width: 30%;
+    background: #BF0426;
+    color: #DEDEDE;
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
@@ -69,7 +72,7 @@ body {
     border: 1px solid rgb(255 255 255 / 8%);
 }
 .card button:hover {
-    background-color: rgba(100,77,237,0.05);
+    outline: rgb(242, 163, 102) solid 2px;
 }
 
 /* Music Styling */
@@ -99,13 +102,23 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 2%;
-    left: 2%;
+    top: 3%;
+    left: 3%;
     color: white;
     width: 20px;
     height: 20px;
     padding: 20px 20px;
-    background-color: rgba(100,77,237,0.08);;
+    background-color: rgba(100,77,237,0.08);
+    z-index: 2;
+}
+.card #previous-button:hover {
+    opacity: 0.8;
+    outline: none;
+}
+
+.card .mute-button:hover {
+    outline: none;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
@@ -218,6 +231,7 @@ input[type=radio]:checked + label{
     backdrop-filter: blur(15px);
     justify-content: center;
     align-items: center;
+    z-index: 100;
     text-align: center;
 }
 

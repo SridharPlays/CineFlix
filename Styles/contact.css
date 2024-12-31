@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans',serif;
+    color: white;
+    /* background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%); */
+    background: url('../Images/Background.jpg')no-repeat;
+    background-color: rgba(0, 0, 0, 0.529);
+    backdrop-filter: blur(15px);
+    height: 100vh;
+
+}
+span {
+    color: white !important; 
+}
+#map { 
+    height: 70vh;
+    width: 90%;
+}

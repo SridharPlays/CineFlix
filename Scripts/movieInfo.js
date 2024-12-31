@@ -464,7 +464,7 @@ movies.forEach(element => {
                   <p id="languageValue">Languages: ${element.language}</p>
                   <p>${formattedLength} | ${element.genre}</p>
                   <p>Rating: ${element.imdb_rating}</p>
-                  <p>Story: ${element.story}</p>
+                  <p class='story'>Story: ${element.story}</p>
                   <p>Director: ${element.director}</p>
                   <p>Writer: ${element.writer}</p>
                   <p>Stars: ${element.stars.join(', ')}</p>
@@ -536,7 +536,11 @@ movies.forEach(element => {
 
     document.querySelector(".image-container").addEventListener("click", () => {
         const trailerContainer = document.getElementById('trailerContainer');
-        audio.muted = true;
+        try {
+            audio.muted = true;
+        } catch(error) {
+
+        }
         movies.forEach(movie => {
             if(movie.name.toLowerCase() === movieName.toLowerCase()) {
                 trailerContainer.innerHTML = `
@@ -552,7 +556,11 @@ movies.forEach(element => {
         document.getElementById('close-trailer').addEventListener('click', () => { 
             trailerContainer.style.display = 'none'; 
             trailerContainer.innerHTML = '';
-            audio.muted = false;
+            try {
+                audio.muted = false;
+            } catch(error) {
+    
+            }
             }
     );
 }});

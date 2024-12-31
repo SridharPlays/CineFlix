@@ -1,0 +1,74 @@
+body {
+    background-color: #10192d;
+}
+
+.caraousel-container {
+    background-color: #17223c;
+    font-family: "Poppins", sans-serif;
+    width: 80%;
+    border-radius: 7px;
+    margin: 5% auto;
+    border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.container {
+    color: #cccccc;
+    width: 100%;
+    border-radius: 7px;
+    padding: 0px 5%;
+    margin: 5% auto;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex2 {
+    border-right: 0.1px solid rgba(178, 170, 171, 0.185);
+}
+
+.flex_content {
+    padding: 5% 10%;
+    flex: 1;
+    height: 500px;
+}
+
+.flex_content h2 {
+    font-weight: 600;
+}
+
+.flex_content h4 {
+    font-weight: 400;
+}
+
+.flex_content span {
+    font-weight: 200;
+}
+
+.flex_content ul {
+    padding-inline-start: 7%;
+    margin: 10% 0;
+}
+
+.flex_content ul li {
+    font-weight: 200;
+    width: 100%;
+}
+
+.flex_content button {
+    outline: none;
+    border: none;
+    background: #aa2b33;
+    color: #ffffff;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 540px) {
+    .flex {
+        flex-direction: column;
+    }
+}

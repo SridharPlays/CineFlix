@@ -11,33 +11,6 @@ body {
 ::selection {
     background-color: rgba(242, 163, 102,0.6);
 }
-header {
-    background-color: rgba(30, 41, 56,0.75);
-    backdrop-filter: blur(15px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-}
-nav a {
-    cursor: pointer;
-    margin: 20px;
-    color: #fff;
-    font-weight: 900;
-    border-bottom: 2px solid transparent;
-    transition: .4s ease-in-out;
-}
-nav a:hover {
-    border-bottom: 2px solid rgb(81, 109, 149);
-}
-header #login-btn {
-    text-decoration: none;
-    border: 2px solid #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: rgb(242, 163, 102);
-    color: black;
-}
 .main-content {
     background: url('../Images/landing.png');
     background-position:center;
