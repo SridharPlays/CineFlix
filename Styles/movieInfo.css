@@ -5,6 +5,7 @@ body {
     height: 100vh;
     font-family: "Poppins", sans-serif;
 }
+
 .card {
     background: #17223c;
     border: 1px solid rgb(255 255 255 / 10%);

@@ -1,0 +1,23 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Movies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="movie" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="language"/>
+              <xs:element type="xs:string" name="genre"/>
+              <xs:element type="xs:string" name="length"/>
+              <xs:element type="xs:float" name="imdb_rating"/>
+              <xs:element type="xs:string" name="age_rating"/>
+              <xs:element type="xs:string" name="story"/>
+              <xs:element type="xs:string" name="director"/>
+              <xs:element type="xs:string" name="writer"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

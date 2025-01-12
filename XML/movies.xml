@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="movies.xsl"?>
+<Movies xmlns="http://www.example.com/moviesNamespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="movies.xsd">
+  <movie>
+    <name>Leo</name>
+    <language>Tamil, Telugu, Hindi, Kannada, Malayalam</language>
+    <genre>Action, Crime, Drama, Thriller</genre>
+    <length>02:45</length>
+    <imdb_rating>8.1</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>A mild-mannered man gets drawn into a world of crime and violence when he is forced to protect his family.</story>
+    <director>Lokesh Kanagaraj</director>
+    <writer>Lokesh Kanagaraj</writer>
+  </movie>
+  <movie>
+    <name>Lucky Bhaskar</name>
+    <language>Telugu, Malayalam, Tamil, Hindi</language>
+    <genre>Crime, Drama, Thriller</genre>
+    <length>02:25</length>
+    <imdb_rating>7.8</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>The story follows a clever gambler whose antics lead him to face unforeseen consequences.</story>
+    <director>Harish Kalyan</director>
+    <writer>Harish Kalyan</writer>
+  </movie>
+  <movie>
+    <name>Transformer One</name>
+    <language>English</language>
+    <genre>Animation, Action, Adventure, Fantasy, Sci-Fi</genre>
+    <length>02:30</length>
+    <imdb_rating>8.5</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>A prequel to the Transformers saga that explores the origins of Optimus Prime and Megatron.</story>
+    <director>Steven Caple Jr.</director>
+    <writer>Joby Harold</writer>
+  </movie>
+  <movie>
+    <name>Amaran</name>
+    <language>Tamil</language>
+    <genre>Action, Biography, Drama, War</genre>
+    <length>02:15</length>
+    <imdb_rating>7.9</imdb_rating>
+    <age_rating>A</age_rating>
+    <story>The life and struggles of an unsung hero who fights for justice in the face of adversity.</story>
+    <director>K. Rajeshwar</director>
+    <writer>K. Rajeshwar</writer>
+  </movie>
+  <movie>
+    <name>Interstellar</name>
+    <language>English</language>
+    <genre>Adventure, Drama, Sci-Fi</genre>
+    <length>02:49</length>
+    <imdb_rating>8.6</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.</story>
+    <director>Christopher Nolan</director>
+    <writer>Jonathan Nolan, Christopher Nolan</writer>
+  </movie>
+  <movie>
+    <name>Aavesham</name>
+    <language>Malayalam</language>
+    <genre>Action, Comedy</genre>
+    <length>02:10</length>
+    <imdb_rating>7.3</imdb_rating>
+    <age_rating>U</age_rating>
+    <story>A fun-filled action drama that follows a quirky group of misfits and their hilarious adventures.</story>
+    <director>Basil Joseph</director>
+    <writer>Basil Joseph</writer>
+  </movie>
+  <movie>
+    <name>KGF Chapter 2</name>
+    <language>Kannada, Tamil, Hindi, Telugu, Malayalam</language>
+    <genre>Action, Drama</genre>
+    <length>02:48</length>
+    <imdb_rating>8.2</imdb_rating>
+    <age_rating>A</age_rating>
+    <story>Rocky continues his rise to power in the criminal underworld, battling enemies on all sides.</story>
+    <director>Prashanth Neel</director>
+    <writer>Prashanth Neel</writer>
+  </movie>
+  <movie>
+    <name>Avengers Endgame</name>
+    <language>English</language>
+    <genre>Action, Adventure, Drama, Sci-Fi</genre>
+    <length>03:02</length>
+    <imdb_rating>8.4</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>The Avengers assemble one final time to reverse Thanos's destruction and restore balance to the universe.</story>
+    <director>Anthony Russo, Joe Russo</director>
+    <writer>Christopher Markus, Stephen McFeely</writer>
+  </movie>
+  <movie>
+    <name>Godzilla x Kong: The New Empire</name>
+    <language>English</language>
+    <genre>Action, Adventure, Sci-Fi</genre>
+    <length>02:34</length>
+    <imdb_rating>7.6</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>Godzilla and Kong face a new threat that could endanger both their species and humanity.</story>
+    <director>Adam Wingard</director>
+    <writer>Terry Rossio</writer>
+  </movie>
+  <movie>
+    <name>Avatar: The Way of Water</name>
+    <language>English</language>
+    <genre>Action, Adventure, Fantasy, Sci-Fi</genre>
+    <length>03:12</length>
+    <imdb_rating>7.8</imdb_rating>
+    <age_rating>U/A</age_rating>
+    <story>Jake Sully and Neytiri must protect their family when an old threat resurfaces on Pandora.</story>
+    <director>James Cameron</director>
+    <writer>James Cameron</writer>
+  </movie>
+</Movies>
