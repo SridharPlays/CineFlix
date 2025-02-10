@@ -40,8 +40,9 @@ body {
     text-transform: uppercase;
 }
 button {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 16px;
+    font-family: 'Poppins',sans-serif;
 }
 .button1 {
     min-width: 120px;

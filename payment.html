@@ -14,10 +14,14 @@
 
 <body class="bg-gray-900">
     <header>
+        <img src="./Images/Logos/cineflix_logo.png">
         <nav>
-            <a href="index.html">HOME</a>
-        </nav>
-        <img src="./Images/Avatar.jpg" alt="Avatar">
+                <a href="index.html">HOME</a>
+                <a href="index.html">MOVIES</a>
+                <a href="index.html">SHOWTIMES</a>
+                <a href="index.html">CINEMAS</a>
+            </nav>
+        <img class="avatar" src="./Images/Avatar.jpg" alt="Avatar">
     </header>
 
     <div class="flex justify-center items-center min-h-screen bg-gray-900">
@@ -40,7 +44,7 @@
                     </div>
                     <div class="mb-4">
                         <span class="block mb-2">Credit Card Number :</span>
-                        <input type="number" placeholder="XXXX XXXX XXXX XXXX" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm">
+                        <input type="number" placeholder="XXXX XXXX XXXX XXXX" class="w-full px-4 py-3 border bo    rder-gray-300 rounded-lg text-sm">
                     </div>
                     <div class="mb-4">
                         <span class="block mb-2">Exp. Month :</span>
@@ -120,6 +124,10 @@ nav a {
     transition: .4s ease-in-out;
     text-decoration: none;
 }
+header img {
+    width: 120px;
+    display: inline-block;
+}
 nav a:hover {
     border-bottom: 2px solid rgb(81, 109, 149);
 }
@@ -131,7 +139,7 @@ header #login-btn {
     background-color: rgb(242, 163, 102);
     color: black;
 }
-header img {
+header .avatar {
     vertical-align: middle;
     width: 50px;
     height: 50px;

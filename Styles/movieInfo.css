@@ -3,7 +3,9 @@ body {
     color: #8f9db2;
     margin: 0;
     height: 100vh;
+    overflow-y: hidden;
     font-family: "Poppins", sans-serif;
+    background: url('../Images/Background.jpg')no-repeat;
 }
 
 .card {
@@ -13,6 +15,7 @@ body {
     font-size: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     position: relative;
+    height: 100vh;
 }
 .card abbr {
     text-decoration: none;
@@ -50,7 +53,8 @@ body {
 }
 .card img {
     width: 100%;
-    max-width: 350px;
+    height: 450px;
+    /* max-width: 300px; */
     border-radius: 10px;
     object-fit: cover;
     cursor: pointer;
@@ -72,9 +76,9 @@ body {
     transition: background-color 0.3s ease;
     border: 1px solid rgb(255 255 255 / 8%);
 }
-.card button:hover {
+/* .card button:hover {
     outline: rgb(242, 163, 102) solid 2px;
-}
+} */
 
 /* Music Styling */
 
@@ -86,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     bottom: 2%;
     right: 2%;
     color: white;
@@ -103,7 +107,7 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 3%;
+    top: 1.8%;
     left: 3%;
     color: white;
     width: 20px;
