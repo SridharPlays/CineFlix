@@ -75,7 +75,7 @@ const movies = [
         writer: "Jonathan Nolan, Christopher Nolan",
         stars: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
         trailer: "https://www.youtube.com/embed/zSWdZVtXT7E?si=PB0ohc7JSi7Bu4oX",
-        music: "Interstellar.mp3"
+        music: "Interstellar2.mp3"
     },
     {
         name: "Aavesham",

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CINEEFLIX Movie Library</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/navigation.css">
+    <link rel="stylesheet" href="./Styles/reviewPage.css">
+  </head>
+  <body ng-controller="MovieController">
+    <header class="navigation">
+      <img onclick="window.location.href = 'index.html'" src="./Images/Logos/1080x500logo.svg" alt="logo">
+      <img src="./Images/Avatar.jpg" alt="Avatar" class="avatar">
+    </header>
+
+    <h2> CINEFLIX Movie Library</h2>
+    <input type="text" ng-model="searchText" placeholder="Search Movies" ng-focus="onFocus()" ng-blur="onBlur()" class="search-box"/>
+
+    <div class="movies">
+        <div class="movie_card" ng-repeat="movie in movies | filter:searchText | orderBy:'name'" ng-class="getMovieClass()" ng-mouseenter="highlight = true" ng-mouseleave="highlight = false" ng-style="highlight ? {'border': '2px solid white'} : {}" ng-click="shareMovie(movie.name)">
+        <div class="info_section">
+          <div class="movie_header">
+            <img class="locandina" ng-src="../MovieBanner/{{movie.image_loc}}"/>
+            <h1>{{ movie.name | uppercase }}</h1>
+            <h4>{{ movie.director }}</h4>
+            <div style="display: flex; width: fit-content; align-items: center; width: fit-content;">
+              <span class="minutes" style="width: max-content;">{{ formatLength(movie.length) }}</span>
+              <!-- <p class="type" style="width: fit-content;">{{ movie.genre }}</p> -->
+            </div>
+          </div>
+          <div class="movie_desc">
+            <p class="text">{{ movie.story | limitTo:100 }}...</p>
+          </div>
+          <div class="movie_social">
+            <ul>
+              <li><i class="material-icons">share</i></li>
+              <li><i id="heart" class="material-icons">favorite</i></li>
+              <li><i class="material-icons">chat_bubble</i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="blur_back" ng-class="getMovieClass()"></div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      var app = angular.module("movieApp", []);
+
+      app.controller("MovieController", function ($scope, $http) {
+        $scope.movies = [];
+
+        $http.get("movies.json").then(function (response) {
+          $scope.movies = response.data;
+        });
+
+        $scope.formatLength = function (length) {
+          let [hours, minutes] = length.split(":");
+          hours = parseInt(hours, 10);
+          return `${hours}h ${minutes}m`;
+        };
+
+        $scope.getMovieClass = function () {
+          return Math.random() < 0.5 ? "tomb_back" : "bright_back";
+        };
+
+        $scope.onFocus = function () {
+          console.log("Search box focused");
+        };
+
+        $scope.onBlur = function () {
+          console.log("Search box lost focus");
+        };
+
+        $scope.shareMovie = function (movieName) {
+          window.location.href = `movieInfo.html?movie=${encodeURIComponent(movieName)}`;
+        };
+      });
+    </script>
+  </body>
+</html>

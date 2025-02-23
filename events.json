@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Music Festival",
+    "image_loc": "music_festival.jpg",
+    "location": "Mumbai, Maharashtra",
+    "date": "2025-06-15",
+    "time": "18:00",
+    "genre": "Rock, Pop, EDM",
+    "duration": "5 hours",
+    "rating": "All Ages",
+    "description": "Experience an electrifying night of music with top artists from around the world.",
+    "organizer": "Live Nation",
+    "performers": [
+      "Arijit Singh",
+      "Neha Kakkar",
+      "Badshah"
+    ],
+    "trailer": "https://www.youtube.com/embed/event_trailer",
+    "ticket_price": 7500
+  },
+  {
+    "name": "Tech Conference",
+    "image_loc": "tech_conference.jpg",
+    "location": "Bengaluru, Karnataka",
+    "date": "2025-09-20",
+    "time": "09:00",
+    "genre": "Technology, Innovation",
+    "duration": "8 hours",
+    "rating": "All Ages",
+    "description": "A gathering of tech enthusiasts, startups, and industry leaders to discuss the future of technology.",
+    "organizer": "TechWorld Inc.",
+    "performers": [
+      "Narayana Murthy",
+      "Sundar Pichai",
+      "Satya Nadella"
+    ],
+    "trailer": "https://www.youtube.com/embed/tech_trailer",
+    "ticket_price": 1500
+  },
+  {
+    "name": "Comedy Night",
+    "image_loc": "comedy_night.jpg",
+    "location": "Delhi, Delhi",
+    "date": "2025-07-10",
+    "time": "20:00",
+    "genre": "Comedy, Stand-up",
+    "duration": "3 hours",
+    "rating": "18+",
+    "description": "An evening of laughter with top stand-up comedians from around the world.",
+    "organizer": "Laugh Out Loud",
+    "performers": [
+      "Zakir Khan",
+      "Kenny Sebastian",
+      "Atul Khatri"
+    ],
+    "trailer": "https://www.youtube.com/embed/comedy_trailer",
+    "ticket_price": 500
+  },
+  {
+    "name": "Gaming Expo",
+    "image_loc": "gaming_expo.jpg",
+    "location": "Hyderabad, Telangana",
+    "date": "2025-11-05",
+    "time": "10:00",
+    "genre": "Gaming, eSports",
+    "duration": "3 days",
+    "rating": "All Ages",
+    "description": "The biggest gaming expo of the year, featuring game demos, tournaments, and developer panels.",
+    "organizer": "GameWorld",
+    "performers": [
+      "Mortal",
+      "Scout",
+      "Jonathan"
+    ],
+    "trailer": "https://www.youtube.com/embed/gaming_trailer",
+    "ticket_price": 2000
+  },
+  {
+    "name": "Food Carnival",
+    "image_loc": "food_carnival.jpg",
+    "location": "Chennai, Tamil Nadu",
+    "date": "2025-08-25",
+    "time": "12:00",
+    "genre": "Food, Festival",
+    "duration": "2 days",
+    "rating": "All Ages",
+    "description": "Taste a variety of dishes from top chefs across the country.",
+    "organizer": "Foodies United",
+    "performers": [
+      "Chef Sanjeev Kapoor",
+      "Chef Ranveer Brar"
+    ],
+    "trailer": "https://www.youtube.com/embed/food_trailer",
+    "ticket_price": 500
+  },
+  {
+    "name": "Literature Fest",
+    "image_loc": "literature_fest.jpg",
+    "location": "Jaipur, Rajasthan",
+    "date": "2025-10-15",
+    "time": "10:00",
+    "genre": "Literature, Arts",
+    "duration": "4 days",
+    "rating": "All Ages",
+    "description": "Celebrate the art of storytelling with renowned authors and poets.",
+    "organizer": "Book Lovers Association",
+    "performers": [
+      "Chetan Bhagat",
+      "Arundhati Roy",
+      "Jhumpa Lahiri"
+    ],
+    "trailer": "https://www.youtube.com/embed/litfest_trailer",
+    "ticket_price": 700
+  }
+]
