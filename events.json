@@ -25,7 +25,7 @@
     "date": "2025-09-20",
     "time": "09:00",
     "genre": "Technology, Innovation",
-    "duration": "8 hours",
+    "duration": "1 Day",
     "rating": "All Ages",
     "description": "A gathering of tech enthusiasts, startups, and industry leaders to discuss the future of technology.",
     "organizer": "TechWorld Inc.",
@@ -77,7 +77,7 @@
   },
   {
     "name": "Food Carnival",
-    "image_loc": "food_carnival.jpg",
+    "image_loc": "food_carnival.avif",
     "location": "Chennai, Tamil Nadu",
     "date": "2025-08-25",
     "time": "12:00",
@@ -95,7 +95,7 @@
   },
   {
     "name": "Literature Fest",
-    "image_loc": "literature_fest.jpg",
+    "image_loc": "literature_fest.avif",
     "location": "Jaipur, Rajasthan",
     "date": "2025-10-15",
     "time": "10:00",

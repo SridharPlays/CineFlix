@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 	<link rel="stylesheet" href="./Styles/navigation.css">
+    <link rel="stylesheet" href="./Styles/event.css">
 </head>
 <body ng-controller="EventsController">
     <header header class="navigation">
@@ -18,12 +19,11 @@
   	</header>
     <h2>Events</h2>
 
-    <!-- Search and Sort Controls -->
     <div class="controls">
         <input type="text" ng-model="searchQuery" placeholder="Search events by name..." />
 
         <select ng-model="locationSort" ng-options="loc for loc in uniqueLocations">
-            <option value="">Sort by Location</option>
+            <option value="" selected="selected">Sort by Location</option>
         </select>
 
         <select ng-model="priceSort">
@@ -32,6 +32,13 @@
             <option value="desc">Price: High to Low</option>
         </select>
 
+        <select ng-model="currency" ng-change="convertCurrency()">
+            <option value="INR">INR (₹)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="CAD">CAD (C$)</option>
+        </select>
+        
 		<button ng-click="resetFilters()">Reset Filters</button>
     </div>
 
@@ -39,18 +46,18 @@
         <div class="event_card" ng-repeat="event in filteredEvents = (events | filter:{name: searchQuery} | orderBy:priceSort=='asc'?'ticket_price':(priceSort=='desc'?'-ticket_price':'') | filter:{location: locationSort})">
             <div class="info_section">
                 <div class="event_header">
-                    <img class="locandina" ng-src="../MovieBanner/{{event.image_loc}}"/>
+                    <img class="locandina" ng-click="showTrailer(event.name)" ng-src="../Images/Events/{{event.image_loc}}"/>
                     <h1>{{event.name}}</h1>
                     <h4>Organized by: {{event.organizer}}</h4>
-                    <span class="minutes">{{event.duration}}</span>
+                    <span class="minutes">{{event.duration | uppercase }}</span>
                     <p class="type">{{event.genre}}</p>
                 </div>
                 <div class="event_details">
                     <p><strong>Location:</strong> {{event.location}}</p>
-                    <p><strong>Date:</strong> {{event.date}}</p>
-                    <p><strong>Time:</strong> {{event.time}}</p>
+                    <p><strong>Date:</strong> {{event.date | date:'MMMM d, yyyy'}}</p>
+                    <p><strong>Time:</strong> {{event.time}}</p>        
                     <p><strong>Rating:</strong> {{event.rating}}</p>
-                    <p><strong>Ticket Price:</strong> ₹{{event.ticket_price}}</p>
+                    <p><strong>Ticket Price:</strong> {{currency | number:1}} {{event.converted_price | number:1}}</p>
                 </div>
                 <div class="event_desc">
                     <p class="text">{{event.description}}</p>
@@ -84,7 +91,8 @@
             $scope.searchQuery = '';
             $scope.locationSort = '';
             $scope.priceSort = '';
-            $scope.uniqueLocations = [];
+            $scope.currency = 'INR';
+            $scope.conversionRates = { INR: 1, USD: 0.012, EUR: 0.011, CAD: 0.016 };
 
             $http.get('events.json').then(function(response) {
                 $scope.events = response.data;
@@ -95,254 +103,31 @@
                 return $sce.trustAsResourceUrl(src);
             };
 
-			$scope.resetFilters = function() {
+            $scope.convertCurrency = function() {
+                $scope.events.forEach(event => {
+                    event.converted_price = (event.ticket_price * $scope.conversionRates[$scope.currency]).toFixed(2);
+                });
+            };
+
+            $scope.showTrailer = function(eventName) {
+                document.querySelectorAll('.event_trailer').forEach(element => {
+                    element.addEventListener('click', () => {
+                        element.style.display = 'none';
+                    })
+                })
+            }
+
+            $scope.resetFilters = function() {
                 $scope.searchQuery = '';
                 $scope.locationSort = '';
                 $scope.priceSort = '';
+                $scope.currency = 'INR';
+                $scope.convertCurrency();
             };
+
+            $scope.convertCurrency();
         });
+
     </script>
 </body>
 </html>
-
-
-<style>
-    @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-html, body {
-  margin: 0;
-  background: black;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-input,select {
-    padding: 10px 20px;
-    outline: none;
-    border: 1px solid white;
-    border-radius: 8px;
-    background-color: #0d0d0c;
-    color: white;
-    margin-left: 60px;
-}
-
-button {
-	padding: 10px 20px;
-	background-color: crimson;
-	border-radius: 8px;
-	outline: none;
-	border: none;
-	font-weight: 300;
-	font-family: 'Poppins',sans-serif;
-	margin-left: 30px;
-}
-
-h2 {
-  color: white;
-  font-size: 32px;
-  font-weight: 100;
-  margin-top: 20px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 20px;
-}
-
-.controls {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.events {
-  display: flex;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.event_card {
-  position: relative;
-  width: 700px;
-  height: 350px;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 10px;
-  transition: all 0.4s;
-}
-
-.event_card:hover {
-  transform: scale(1.02);
-  transition: all 0.4s;
-}
-
-.event_details { 
-    display: flex;
-    align-items: self-start;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.event_details p {
-    color: rgba(255, 255, 255, 0.823);
-}
-
-.info_section {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-blend-mode: multiply;
-  z-index: 2;
-  border-radius: 10px;
-}
-
-.event_header {
-  position: relative;
-  padding: 25px 25px 0px 25px;
-  height: 35%;
-}
-
-/* Movie Name */
-.event_header h1 {
-  color: #fff;
-  font-weight: 400;
-  line-height: 30px;
-  width: 100%;
-}
-
-.event_header h4 {
-  color: #9ac7fa;
-  font-weight: 400;
-}
-
-.minutes {
-  display: inline-block;
-  margin-top: 10px;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-}
-
-.type {
-  display: inline-block;
-  color: #cee4fd;
-  margin-left: 10px;
-}
-
-.locandina {
-  position: relative;
-  float: left;
-  margin-right: 20px;
-  height: 180px;
-  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
-  width: 120px;
-}
-
-.event_desc {
-  padding: 25px;
-  height: 50%;
-}
-
-.event_desc .text {
-  color: #cfd6e1;
-  /* margin-left: 32px; */
-}
-
-.event_social {
-  height: 10%;
-  padding-left: 15px;
-  padding-bottom: 20px;
-}
-
-.event_social ul {
-  list-style: none;
-  padding: 0;
-}
-
-.event_social ul li {
-  display: inline-block;
-  color: rgba(255, 255, 255, 0.4);
-  transition: color 0.3s;
-  transition-delay: 0.15s;
-  margin: 0 10px;
-}
-
-.event_social ul li:hover {
-  transition: color 0.3s;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.event_social ul li i {
-  font-size: 19px;
-  cursor: pointer;
-}
-
-.blur_back {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  height: 100%;
-  right: 0;
-  background-size: cover;
-  border-radius: 11px;
-}
-
-#heart:active, #heart:hover {
-  color: red;
-}
-
-@media screen and (min-width: 768px) {
-  .event_header {
-    width: 60%;
-  }
-
-  .event_desc {
-    width: 50%;
-  }
-
-  .info_section {
-    background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
-  }
-
-  .blur_back {
-    width: 80%;
-    background-position: -100% 10% !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .event_card {
-    width: 95%;
-    margin: 70px auto;
-    min-height: 350px;
-    height: auto;
-  }
-
-  .blur_back {
-    width: 100%;
-    background-position: 50% 50% !important;
-  }
-
-  .event_header {
-    width: 100%;
-    margin-top: 85px;
-  }
-
-  .event_desc {
-    width: 100%;
-  }
-
-  .info_section {
-    background: linear-gradient(to top, rgb(20, 20, 19) 50%, transparent 100%);
-    display: inline-grid;
-  }
-}
-
-</style>

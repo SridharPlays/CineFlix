@@ -419,6 +419,10 @@ const movies = [
 const urlParams = new URLSearchParams(window.location.search);
 const movieName = urlParams.get('movie');
 
+if(movieName === ""){
+    window.location.href = 'movieLibrary.html';
+}    
+
 movies.forEach(element => {
     if(movieName.toLowerCase() === element.name.toLowerCase()) {
         moviesInfoDiv = document.getElementById('card');

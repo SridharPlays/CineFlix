@@ -7,6 +7,10 @@ let timeInfo = document.getElementById('showTimeInfo');
 const urlParams = new URLSearchParams(window.location.search);
 const movieName = urlParams.get('movie'); 
 const movieLang = urlParams.get('lang');
+if(movieName === ""){
+    window.location.href = 'movieLibrary.html';
+}    
+
 
 movieInfo.innerHTML = movieName + ' • ' + movieLang;
 
@@ -224,8 +228,40 @@ function updateTimes() {
 updateDates();
 updateTimes();
 
+
+async function logData(movieName, movieLanguage, moviePrice) {
+    const request = new Request("http://localhost:5000/api/booking-info", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+            movieName: movieName, 
+            language: movieLanguage, 
+            price: moviePrice 
+        }),
+    });
+
+    try {
+        const response = await fetch(request);
+        console.log("Status:", response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Response Data:", data);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+
 // go to ticket page
 const bookButton = document.getElementById('book');
 bookButton.addEventListener('click', () => {
+    logData(movieName, movieLang, document.querySelector(".amount").innerHTML);
             window.location.href = `ticket.html?movie=${encodeURIComponent(movieName)}&lang=${encodeURIComponent(movieLang)}&seats=${encodeURIComponent(ticketsBooked)}&price=${encodeURIComponent(document.querySelector(".amount").innerHTML)}&time=${encodeURIComponent(timeInfo.textContent)}&day=${encodeURIComponent(dateInfo.textContent)}`;
 });
+

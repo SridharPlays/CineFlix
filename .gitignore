@@ -1,4 +1,5 @@
 # Ignoring Files
+node_modules
 Testing/
 Casts/
 MovieLargeBanner/
