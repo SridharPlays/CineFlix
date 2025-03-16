@@ -257,6 +257,33 @@ async function logData(movieName, movieLanguage, moviePrice) {
     }
 }
 
+async function emitInformation(movieName, ticketsBooked) {
+    const request = new Request("http://localhost:5000/api/booking-info", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+            movie: movieName,
+            seat: ticketsBooked
+        }),
+    });
+
+    try {
+        const response = await fetch(request);
+        console.log("Status:", response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Response Data:", data);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
 
 // go to ticket page
 const bookButton = document.getElementById('book');

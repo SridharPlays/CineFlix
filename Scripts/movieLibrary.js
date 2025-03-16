@@ -1,194 +1,5 @@
-const movies = [{
-    name: "Leo",
-    image_loc: "Leo.jpg",
-    language: "Tamil, Telugu, Hindi, Kannada, Malayalam",
-    format: "IMAX 2D, 2D",
-    genre: "Action, Crime, Drama, Thriller"
-},
-{
-    name: "Lucky Bhaskar",
-    image_loc: "LuckyBhaskar.jpg",
-    language: "Telugu, Malayalam, Tamil, Hindi",
-    format: "2D",
-    genre: "Crime, Drama, Thriller"
-},
-{
-    name: "Transformer One",
-    image_loc: "TransformerOne.jpg",
-    language: "English",
-    format: "IMAX 3D, 4DX, 2D",
-    genre: "Animation, Action, Adventure, Fantasy, Sci-Fi"
-},
-{
-    name: "Minecraft",
-    image_loc: "Minecraft.jpg",
-    language: "English",
-    format: "IMAX 3D, 4DX, 2D",
-    genre: "Animation, Adventure, Fantasy",
-},
-{
-    name: "Pacific Rim",
-    image_loc: "PacificRim.jpg",
-    language: "English",
-    format: "IMAX 3D, 4DX, 2D",
-    genre: "Action, Adventure, Sci-Fi",
-},
-{
-    name: "Amaran",
-    image_loc: "Amaran.jpg",
-    language: "Tamil",
-    format: "2D",
-    genre: "Action, Biography, Drama, War"
-},
-{
-    name: "Interstellar",
-    image_loc: "Interstellar.jpg",
-    language: "English",
-    format: "IMAX 3D, 4DX, 2D",
-    genre: "Adventure, Drama, Sci-Fi"
-},
-{
-    name: "Aavesham",
-    image_loc: "Aavesham.jpg",
-    language: "Malayalam",
-    format: "2D",
-    genre: "Action, Comedy"
-},
-{   name: "KGF Chapter 2", 
-    image_loc: "KGFChapter2.jpg", 
-    language: "Kannada, Tamil, Hindi, Telugu, Malayalam", 
-    format: "2D", 
-    genre: "Action, Drama" 
-}, 
-{   
-    name: "Avengers Endgame",
-    image_loc: "AvengersEndgame.jpg",
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Action, Adventure, Drama, Sci-Fi" 
-}, 
-{ 
-    name: "Godzilla x Kong: The New Empire", 
-    image_loc: "GodzillaxKong.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Action, Adventure, Sci-Fi" 
-}, 
-{ name: "Avatar: The Way of Water", 
-    image_loc: "Avatar2.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Action, Adventure, Fantasy, Sci-Fi" 
-}, 
-{ 
-    name: "Cars 3", 
-    image_loc: "Cars3.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Animation, Adventure, Comedy, Sport" 
-}, 
-{ 
-    name: "Mission: Impossible - The Final Reckoning", 
-    image_loc: "MissionImpossible.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Action, Adventure, Thriller" 
-}, 
-{ 
-    name: "The Wild Robot", 
-    image_loc: "WildRobot.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Animation, Adventure, Sci-Fi" 
-}, 
-{ 
-    name: "Mufasa: The Lion King", 
-    image_loc: "Mufasa.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Animation, Adventure, Drama" 
-}, 
-{ 
-    name: "Manjummel Boys", 
-    image_loc: "ManjummelBoys.jpg", 
-    language: "Malayalam", 
-    format: "2D", 
-    genre: "Comedy, Drama" 
-}, 
-{ 
-    name: "Soorarai Potru", 
-    image_loc: "SooraraiPotru.jpg", 
-    language: "Tamil", 
-    format: "2D", 
-    genre: "Biography, Drama" 
-}, 
-{ 
-    name: "Kingdom of the Planet of the Apes", 
-    image_loc: "KingdomOfApes.jpg", 
-    language: "English", 
-    format: "IMAX 3D, 4DX, 2D", 
-    genre: "Action, Adventure, Drama, Sci-Fi" 
-}, 
-{ 
-    name: "Dune: Part Two", 
-    image_loc: "Dune.jpg", 
-    language: "English", 
-    format: "IMAX 2D, 4DX, 2D", 
-    genre: "Adventure, Drama, Sci-Fi" 
-},
-{
-    name: "Alien: Romulus",
-    image_loc: "AlienRomulus.jpg",
-    language: "English",
-    format: "IMAX 2D, 4DX, 2D",
-    genre: "Horror, Sci-Fi, Thriller"
-},
-{
-    name: "Wicked",
-    image_loc: "Wicked.jpg",
-    language: "English",
-    format: "2D",
-    genre: "Fantasy, Romance"
-},
-{
-    name: "Ponniyin Selvan: Part Two",
-    image_loc: "PS2.jpg",
-    language: "Tamil, Hindi, Kannada, Telugu, Malayalam",
-    format: "IMAX 2D, 2D",
-    genre: "Action, Adevnture, History, Drama"
-},
-{
-    name: "Bullet Train",
-    image_loc: "BulletTrain.jpg",
-    language: "English",
-    format: "IMAX 3D",
-    genre: "Action, Comedy, Thriller"
-},
-{
-    name: "How to Train Your Dragon",
-    image_loc: "Dragon.jpg",
-    language: "English",
-    format: "IMAX 3D, 4DX, 3D",
-    genre: "Action, Adventure, Comedy, Drama, Fantasy"
-},
-{
-    name: "Gladiador II",
-    image_loc: "Gladiador.jpg",
-    language: "English",
-    format: "IMAX 2D, 4DX, 2D",
-    genre: "Action, Adventure, Drama"
-},
-{
-    name: "Oppenheimer",
-    image_loc: "Oppenheimer.jpg",
-    language: "English",
-    format: "IMAX 2D, 4DX, 2D",
-    genre: "Biography, Drama, History",
-}
-];
-
 const languageList = [
-    " ",
+    "All",
     "English",
     "Tamil",
     "Telugu",
@@ -197,19 +8,19 @@ const languageList = [
     "Malayalam",
     "Japanese",
     "Korean",
-]
+];
 
 const formatList = [
-    " ",
+    "All",
     "2D",
     "3D",
     "IMAX 2D",
     "IMAX 3D",
     "4DX"
-]
+];
 
 const genreList = [
-    " ",
+    "All",
     "Action",
     "Adventure",
     "Animation",
@@ -224,192 +35,149 @@ const genreList = [
     "Thriller"
 ];
 
-// Loading all the Movies Dynamically
-let moviesDiv = document.getElementById('movies');
+let movies = []; // Stores fetched movies
 
-function loadMovie(element) {
-    let format = element.format.split(',').join(" • ");
-    let div = document.createElement('div');
-    div.className = 'movie';
+// Loading all the Movies Dynamically
+let moviesDiv = document.getElementById("movies");
+
+function loadMovie(movie) {
+    let format = movie.Format.split(",").join(" • ");
+    let div = document.createElement("div");
+    div.className = "movie";
+    div.setAttribute("data-id", movie.MovieNo);
     div.innerHTML = `
-        <img src="MovieBanner/${element.image_loc}">
-        <h1>${element.name}</h1> 
-        <p>${element.language}</p> 
+        <img src="${movie.PosterURL}" loading="lazy">
+        <h1>${movie.Title}</h1> 
+        <p>${movie.Language}</p> 
         <p>${format}</p>
-        `;
+    `;
     moviesDiv.appendChild(div);
 }
 
-
-movies.forEach(element => loadMovie(element));
-
-// Loading Languages Options
-let i = 0;
-let languageDiv = document.getElementById('languageOptions');
-languageList.forEach((language)=> {
-    let languageHTML = document.createElement('div');
-    languageHTML.className = "option";
-    if(i === 0 ) {
-    languageChecked = 'checked';
-    languageValue = 'All';
+// Fetch Movies from API
+async function fetchMovies() {
+    try {
+        const response = await fetch("http://localhost:5000/api/movies/");
+        const data = await response.json();
+        if (data.success) {
+            movies = data.data; // Store movies globally
+            movies.forEach(loadMovie);
+        } else {
+            console.error("Error fetching movies:", data.message);
+        }
+    } catch (error) {
+        console.error("Failed to fetch movies:", error);
+    }
 }
-    languageHTML.innerHTML = `
-        <input id="language${i}" name="language" class="language-btn" value="${i === 0 ? '' : language}" type="radio" ${i === 0 ? 'checked' : ''}>
-        <label for="language${i}">${i === 0 ? 'All' : language}</label>
+
+fetchMovies();
+
+// Utility function to dynamically create filter options
+function createFilterOptions(containerId, list, type) {
+    let container = document.getElementById(containerId);
+    list.forEach((item, index) => {
+        let div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = `
+            <input id="${type}${index}" name="${type}" class="${type}-btn" value="${index === 0 ? '' : item}" type="radio" ${index === 0 ? 'checked' : ''}>
+            <label for="${type}${index}">${item}</label>
         `;
-
-    languageDiv.appendChild(languageHTML);
-    i++;
-})
-
-// Loading Various Format Options 
-i = 0;
-let formatDiv = document.getElementById('formatOptions');
-formatList.forEach((format)=> {
-    let formatHTML = document.createElement('div');
-    formatHTML.className = "option";
-    if(i === 0 ) {
-    formatChecked = 'checked';
-    formatValue = 'All';
+        container.appendChild(div);
+    });
 }
-    formatHTML.innerHTML = `
-        <input id="format${i}" name="format" class="format-btn" value="${i === 0 ? '' : format}" type="radio" ${i === 0 ? 'checked' : ''}>
-        <label for="format${i}">${i === 0 ? 'All' : format}</label>
-        `;
 
-    formatDiv.appendChild(formatHTML);
-    i++;
-})
+// Loading filter options dynamically
+createFilterOptions("languageOptions", languageList, "language");
+createFilterOptions("formatOptions", formatList, "format");
+createFilterOptions("genreOptions", genreList, "genre");
 
-// Loading Genre Button Dynamically
-i = 0;
-let genreDiv = document.getElementById('genreOptions');
-genreList.forEach((genre)=> {
-    genreHTML = document.createElement('div');
-    genreHTML.className = "option";
-    let genreChecked, genreValue = '';
-    if(i === 0 ) {
-    genreChecked = 'checked';
-    genreValue = 'All';
-}
-    genreHTML.innerHTML = `
-        <input id="genre${i}" name="genre" class="genre-btn" value="${i === 0 ? '' : genre}" type="radio" ${i === 0 ? 'checked' : ''}>
-        <label for="genre${i}">${i === 0 ? 'All' : genre}</label>
-        `;
-
-    genreDiv.appendChild(genreHTML);
-    i++;
-})
-
-let languageButton = document.querySelectorAll('.language-btn');
-let formatButtons = document.querySelectorAll('.format-btn');
-let genreButtons = document.querySelectorAll('.genre-btn');
-
-// Sorter
+// Filtering Function
 function filterMovies() {
-    const selectedLanguage = document.querySelector('.language-btn:checked')?.value || '';
-    const selectedFormat = document.querySelector('.format-btn:checked')?.value || '';
-    const selectedGenre = document.querySelector('.genre-btn:checked')?.value || '';
+    const selectedLanguage = document.querySelector(".language-btn:checked")?.value || "";
+    const selectedFormat = document.querySelector(".format-btn:checked")?.value || "";
+    const selectedGenre = document.querySelector(".genre-btn:checked")?.value || "";
 
-    moviesDiv.innerHTML = '';
+    moviesDiv.innerHTML = "";
     let movieFound = false;
 
     movies.forEach((movie) => {
-        const languageMatch = selectedLanguage === '' || movie.language.includes(selectedLanguage);
-        const formatMatch = selectedFormat === '' || movie.format.includes(selectedFormat);
-        const genreMatch = selectedGenre === '' || movie.genre.includes(selectedGenre);
+        const languageMatch = selectedLanguage === "" || movie.Language.includes(selectedLanguage);
+        const formatMatch = selectedFormat === "" || movie.Format.includes(selectedFormat);
+        const genreMatch = selectedGenre === "" || movie.Genre.includes(selectedGenre);
 
         if (languageMatch && formatMatch && genreMatch) {
             loadMovie(movie);
             movieFound = true;
         }
     });
-    if(movieFound) {
-        showToast('success')
-    } else {
-        showToast('error');
-    }
+
+    showToast(movieFound ? "success" : "error");
 }
 
+// Attach event listeners after DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".language-btn").forEach((btn) => btn.addEventListener("change", filterMovies));
+    document.querySelectorAll(".format-btn").forEach((btn) => btn.addEventListener("change", filterMovies));
+    document.querySelectorAll(".genre-btn").forEach((btn) => btn.addEventListener("change", filterMovies));
 
-
-// Sorter Caller !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-languageButton.forEach((btn) => btn.addEventListener('change', filterMovies));
-formatButtons.forEach((btn) => btn.addEventListener('change', filterMovies));
-genreButtons.forEach((btn) => btn.addEventListener('change', filterMovies));
-
-// Movie Info Sender
-let selectedMovieName = '';
-let selectedMovieLang = '';
-moviesDiv.addEventListener('click', (event) => {
-    const movieElement = event.target.closest('.movie');
-    if (movieElement) {
-        selectedMovieName = movieElement.querySelector('h1').innerText;
-        window.location.href = `movieInfo.html?movie=${encodeURIComponent(selectedMovieName)}`;
-    }
-});
-
-// Reset Button
-let resetBtn = document.getElementById('reset');
-resetBtn.addEventListener('click', () => {
-    document.getElementById('language0').checked = true;
-    document.getElementById('genre0').checked = true;
-    document.getElementById('format0').checked = true;
-    filterMovies();
-});
-
-
-// Search Functionality
-let searchButton = document.getElementById('search-query');
-searchButton.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        let MovieName = searchButton.value.toLowerCase();
-        let movieFound = false;
-        if(MovieName.length !== 0) {
-        movies.forEach((movie) => {
-            if (MovieName === movie.name.toLowerCase() || movie.name.toLowerCase().includes(MovieName) && MovieName.length > 1) {
-                moviesDiv.innerHTML = '';
-                loadMovie(movie);
-                movieFound = true;
-                showToast('success')
-            }
-        });
-            if (!movieFound) {
-                showToast('error');
-            }
-        };
-    }
-});
-
-
-// Search Cancel Button
-searchButton.addEventListener('input', function(e) {
-    if (this.value === '') {
+    // Reset Button
+    document.getElementById("reset").addEventListener("click", () => {
+        document.getElementById("language0").checked = true;
+        document.getElementById("genre0").checked = true;
+        document.getElementById("format0").checked = true;
         filterMovies();
-    }
-});
+    });
 
+    // Search Functionality
+    let searchButton = document.getElementById("search-query");
+    searchButton.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            let searchQuery = searchButton.value.toLowerCase();
+            let movieFound = false;
+
+            if (searchQuery.length !== 0) {
+                moviesDiv.innerHTML = "";
+                movies.forEach((movie) => {
+                    if (movie.Title.toLowerCase().includes(searchQuery)) {
+                        loadMovie(movie);
+                        movieFound = true;
+                    }
+                });
+            }
+
+            showToast(movieFound ? "success" : "error");
+        }
+    });
+
+    // Search Cancel Button
+    searchButton.addEventListener("input", function () {
+        if (this.value === "") {
+            filterMovies();
+        }
+    });
+
+    // Movie Info Sender
+    moviesDiv.addEventListener("click", (event) => {
+        const movieElement = event.target.closest(".movie");
+        if (movieElement) {
+            let movieId = movieElement.getAttribute("data-id"); // Get movie ID
+            window.location.href = `movieInfo.html?id=${encodeURIComponent(movieId)}`;
+        }
+    });    
+
+    // Toast Close Buttons
+    document.getElementById("close-btn").addEventListener("click", () => {
+        document.getElementById("toast").classList.remove("show");
+    });
+
+    document.querySelector(".error__close").addEventListener("click", () => {
+        document.getElementById("error-toast").classList.remove("show");
+    });
+});
 
 // Toast Functionality
 function showToast(type) {
-    let toast;
-    if (type === 'success') {
-        toast = document.getElementById("toast");
-    } else if (type === 'error') {
-        toast = document.getElementById("error-toast");
-    }
-    toast.className = "toast show";
-    setTimeout(function() {
-        toast.className = toast.className.replace("show", "");
-    }, 3000);
+    let toast = type === "success" ? document.getElementById("toast") : document.getElementById("error-toast");
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
 }
-
-document.getElementById('close-btn').addEventListener("click", () => {
-    let toast = document.getElementById("toast");
-    toast.className = toast.className.replace("show", "");
-});
-
-document.querySelector('.error__close').addEventListener("click", () => {
-    let toast = document.getElementById("error-toast");
-    toast.className = toast.className.replace("show", "");
-});

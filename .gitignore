@@ -6,3 +6,7 @@ MovieLargeBanner/
 
 
 .vscode
+*txt
+.env
+
+authentication/

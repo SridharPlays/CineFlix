@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 5000;
