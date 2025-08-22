@@ -465,7 +465,7 @@ function loadMovieDetails(movie) {
         </header>
         <div class="wrapper">
             <div class="image-container">
-                <img src="../MovieBanner/${movie.image_loc}" alt="${movie.Title}">
+                <img src="./MovieBanner/${movie.image_loc}" alt="${movie.Title}">
             </div>
             <div class="content">
                 <p id="languageValue">Languages: ${movie.language}</p>
