@@ -1,40 +1,54 @@
 const http = require('http');
 const EventEmitter = require('events');
 
-class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter();
+class TicketBooking extends EventEmitter {}
 
-myEmitter.once('oneTimeEvent', () => {
-    console.log('This will run only once.');
+const ticketBooking = new TicketBooking();
+
+// 1. One-Time Event Listeners (Using 'once' method)
+ticketBooking.once('bookTicket', (user, movie) => {
+    console.log(`${user} booked a ticket for ${movie}.`);
 });
 
-myEmitter.on('checkListeners', () => {
-    console.log('Listeners for oneTimeEvent:', myEmitter.listenerCount('oneTimeEvent'));
+// 2. Inspecting Event Listeners
+function logListeners(eventName) {
+    console.log(`Listeners for ${eventName}:`, ticketBooking.listeners(eventName));
+}
+
+// 3. listeners() Method - Get all listeners for an event
+ticketBooking.on('showListeners', (eventName) => {
+    logListeners(eventName);
 });
 
-myEmitter.on('testEvent', () => console.log('Test Event 1 triggered.'));
-myEmitter.on('testEvent', () => console.log('Test Event 2 triggered.'));
-
-myEmitter.on('newListener', (event, listener) => {
-    console.log(`New listener added for: ${event}`);
+// 4. New Listener Event - Fires when a new listener is added
+ticketBooking.on('newListener', (event, listener) => {
+    console.log(`A new listener was added for the event: ${event}`);
 });
 
-myEmitter.on('customEvent', (data) => {
-    console.log(`Custom Event Triggered with Data: ${data}`);
+// 5. Custom Event Emitter
+ticketBooking.on('cancelTicket', (user, movie) => {
+    console.log(`${user} canceled a ticket for ${movie}.`);
 });
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('Node.js Local Server with Event Operations\n');
-    
-    myEmitter.emit('oneTimeEvent');
-    myEmitter.emit('checkListeners');
-    myEmitter.emit('testEvent');
-    myEmitter.emit('customEvent', 'Hello from Custom Event!');
-    
-    res.end('Operations Completed. Check Console for Logs.');
+    if (req.url === '/book' && req.method === 'GET') {
+        ticketBooking.emit('bookTicket', 'Alice', 'Inception');
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Ticket booked!\n');
+    } else if (req.url === '/cancel' && req.method === 'GET') {
+        ticketBooking.emit('cancelTicket', 'Alice', 'Inception');
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Ticket canceled!\n');
+    } else if (req.url === '/listeners' && req.method === 'GET') {
+        ticketBooking.emit('showListeners', 'bookTicket');
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Check console for listeners.\n');
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Not Found\n');
+    }
 });
 
 server.listen(3000, () => {
-    console.log('Server running at http://localhost:3000/');
+    console.log('Server running on http://localhost:3000');
 });

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook - Your Ticket to the Movies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.378.0/dist/lucide-react.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background for a cinematic feel */
+            color: #F9FAFB;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 1)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Cinematic+Background');
+            background-size: cover;
+            background-position: center;
+        }
+        .movie-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .movie-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+        }
+        .scroll-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */
+        }
+        .feature-icon {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-10 py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white tracking-wider">Cine<span class="text-red-500">Book</span></h1>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-300 hover:text-white transition">Movies</a>
+                <a href="#" class="text-gray-300 hover:text-white transition">Theaters</a>
+                <a href="#" class="text-gray-300 hover:text-white transition">Offers</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-300 hover:text-white transition">Sign In</button>
+                <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-bg">
+        <div class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-12">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">Your Ticket to Unforgettable Movie Nights.</h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Quickly find showtimes, choose the best seats, and get instant e-tickets for cinemas near you.
+            </p>
+            <div class="w-full max-w-3xl bg-white/10 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/20">
+                <form class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="relative flex-grow w-full">
+                        <svg class="w-6 h-6 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" placeholder="Search for a movie, event, or cinema..." class="w-full bg-gray-900/50 text-white placeholder-gray-400 border border-gray-600 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    </div>
+                    <button type="submit" class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105">Find Movies</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Now Showing Section -->
+    <section class="py-16 sm:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-bold text-white">Now Showing</h3>
+                <a href="#" class="text-red-500 hover:text-red-400 font-semibold flex items-center gap-2">
+                    View All
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="relative">
+                <div id="movie-carousel" class="flex space-x-6 overflow-x-auto pb-4 scroll-container">
+                    <!-- Movie Card 1 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/334155/FFFFFF?text=Sci-Fi+Epic" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">Cosmic Voyager</h4>
+                        <p class="text-sm text-gray-400">Sci-Fi, Adventure</p>
+                    </div>
+                    <!-- Movie Card 2 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/7c2d12/FFFFFF?text=Action+Thriller" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">Shadow Protocol</h4>
+                        <p class="text-sm text-gray-400">Action, Thriller</p>
+                    </div>
+                    <!-- Movie Card 3 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/166534/FFFFFF?text=Animated+Fun" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">Critter Crew</h4>
+                        <p class="text-sm text-gray-400">Animation, Family</p>
+                    </div>
+                    <!-- Movie Card 4 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/be123c/FFFFFF?text=Romantic+Comedy" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">Parisian Heartbeat</h4>
+                        <p class="text-sm text-gray-400">Romance, Comedy</p>
+                    </div>
+                    <!-- Movie Card 5 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/4a044e/FFFFFF?text=Horror" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">The Last Echo</h4>
+                        <p class="text-sm text-gray-400">Horror, Mystery</p>
+                    </div>
+                     <!-- Movie Card 6 -->
+                    <div class="flex-shrink-0 w-64 movie-card">
+                        <img src="https://placehold.co/400x600/064e3b/FFFFFF?text=Historical+Drama" alt="Movie Poster" class="rounded-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x600';">
+                        <h4 class="text-lg font-semibold text-white">The Crown's Gambit</h4>
+                        <p class="text-sm text-gray-400">Drama, History</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 sm:py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl font-bold text-white mb-2">The Perfect Movie Night, Simplified</h3>
+            <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">Everything you need for a seamless cinema experience, right at your fingertips.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-xl">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full feature-icon mx-auto mb-6">
+                        <svg class="w-8 h-8 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-2">Choose Your Perfect Seat</h4>
+                    <p class="text-gray-400">Use our interactive seat map to pick your spot before you even arrive.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-xl">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full feature-icon mx-auto mb-6">
+                        <svg class="w-8 h-8 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-2">Instant E-Tickets</h4>
+                    <p class="text-gray-400">No printing needed. Your phone is your ticket. Just scan and go!</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-xl">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full feature-icon mx-auto mb-6">
+                        <svg class="w-8 h-8 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-2">Exclusive Deals & Offers</h4>
+                    <p class="text-gray-400">Save more with special offers, loyalty rewards, and food combos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Promotion Section -->
+    <section class="py-16 sm:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Take the Cinema With You</h3>
+                    <p class="text-lg text-gray-400 mb-8">Download the CineBook app for the best booking experience. Get app-only deals, manage your tickets, and get reminders before your show starts.</p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="inline-block"><img src="https://placehold.co/180x60/000000/FFFFFF?text=App+Store" alt="Download on the App Store" class="h-14"></a>
+                        <a href="#" class="inline-block"><img src="https://placehold.co/180x60/000000/FFFFFF?text=Google+Play" alt="Get it on Google Play" class="h-14"></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/500x500/1f2937/FFFFFF?text=App+Screenshot" alt="App Screenshot" class="rounded-lg shadow-2xl mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h2 class="text-2xl font-bold text-white tracking-wider">Cine<span class="text-red-500">Book</span></h2>
+                    <p class="text-gray-400 mt-4">The best way to book your movie tickets online.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider">Company</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider">Support</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider">Connect</h4>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.011 7.053.069 2.59.284 0 2.872 0 7.385c-.058 1.266-.069 1.645-.069 4.615s.011 3.35.069 4.615c0 4.512 2.59 7.101 7.053 7.316C8.333 23.988 8.74 24 12 24s3.667-.012 4.947-.069c4.46-.215 7.053-2.804 7.053-7.316.058-1.265.069-1.645.069-4.615s-.011-3.35-.069-4.615C24 2.872 21.41.284 16.947.069 15.667.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 CineBook. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

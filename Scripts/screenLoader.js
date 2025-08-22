@@ -11,7 +11,6 @@ if(movieName === ""){
     window.location.href = 'movieLibrary.html';
 }    
 
-
 movieInfo.innerHTML = movieName + ' • ' + movieLang;
 
 cinemaInfo.textContent = "Cineflix Director's Cuts, Near Bannerghatta Road, Bengaluru";
@@ -288,7 +287,7 @@ async function emitInformation(movieName, ticketsBooked) {
 // go to ticket page
 const bookButton = document.getElementById('book');
 bookButton.addEventListener('click', () => {
-    logData(movieName, movieLang, document.querySelector(".amount").innerHTML);
+    // logData(movieName, movieLang, document.querySelector(".amount").innerHTML);
             window.location.href = `ticket.html?movie=${encodeURIComponent(movieName)}&lang=${encodeURIComponent(movieLang)}&seats=${encodeURIComponent(ticketsBooked)}&price=${encodeURIComponent(document.querySelector(".amount").innerHTML)}&time=${encodeURIComponent(timeInfo.textContent)}&day=${encodeURIComponent(dateInfo.textContent)}`;
 });
 

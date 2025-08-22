@@ -1,24 +1,15 @@
-(async () => {
-  // Parse URL parameters once
-  const urlParams = new URLSearchParams(window.location.search);
-  const movieName = urlParams.get('movie');
-  if (!movieName) {
-    console.error('Movie ID missing from URL');
-    return;
-  }
-  const movieLanguage = urlParams.get('lang') || '';
-  const moviePrice = urlParams.get('price') || '';
-  const movieSeats = urlParams.get('seats') || '';
-  const movieTime = urlParams.get('time') || '';
-  const movieDay = urlParams.get('day') || '';
-  const movieYear = new Date().getFullYear();
-  const movieDays = movieDay.split(',');
+import express from 'express';
+import EventEmitter from 'events';
 
-  // Generate random once
-  const randomNo = Math.round(Math.random() * 1e8);
-  const randomScreen = Math.round(Math.random() * 20);
+class TicketBooking extends EventEmitter {}
 
-  const movies = [
+const app = express();
+const ticketBooking = new TicketBooking();
+const PORT = 3000;
+
+app.use(express.json());
+
+const movieLibrary = [
     {
         name: "Leo",
         image_loc: "Leo.jpg",
@@ -95,7 +86,7 @@
         writer: "Jonathan Nolan, Christopher Nolan",
         stars: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
         trailer: "https://www.youtube.com/embed/zSWdZVtXT7E?si=PB0ohc7JSi7Bu4oX",
-        music: "Interstellar.mp3"
+        music: "Interstellar2.mp3"
     },
     {
         name: "Aavesham",
@@ -141,7 +132,7 @@
         writer: "Christopher Markus, Stephen McFeely",
         stars: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
         trailer: "https://www.youtube.com/embed/TcMBFSGVi1c?si=TpQ525xCTInCkd90",
-        music: "Victory.mp3"
+        // music: "Victory.mp3"
     },
     {
         name: "Godzilla x Kong: The New Empire",
@@ -435,89 +426,55 @@
     }
     
 ];
+const bookedTickets = [];
 
+// One-Time Event Listener
+ticketBooking.once('bookTicket', (movie, seat) => {
+    bookedTickets.push({ movie, seat });
+    console.log(`A User booked a ticket for ${movie} at seat ${seat}.`);
+});
 
-  const movie = movies.find(m => m.name.includes(movieName));
-  if (!movie) return;
+// Inspecting Event Listeners
+function logListeners(eventName) {
+    console.log(`Listeners for ${eventName}:`, ticketBooking.listeners(eventName));
+}
 
-  // Prepare genres string
-  const movieGenre = movie.genre.split(',').join(' • ');
+ticketBooking.on('showListeners', (eventName) => {
+    logListeners(eventName);
+});
 
-  // Fill ticket HTML
-  const ticket = document.getElementById('ticket');
-  ticket.innerHTML = `
-    <div class="left">
-      <div class="image" id="image" style="background-image:url('./MovieBanner/${movie.image_loc}')">
-        <div class="ticket-number"><p>#${randomNo}</p></div>
-      </div>
-      <div class="ticket-info">
-        <p class="date"><span>${movieDays[0] || ''}</span><span class="date-info">${movieDays[1] || ''}</span><span>${movieYear}</span></p>
-        <div class="show-name"><h1>${movieName} • ${movieLanguage}</h1><p>${movieGenre}</p></div>
-        <div class="time main-time">
-          <p>TIME<span>: </span>${movieTime}</p>
-          <p>SEAT NO<span>: </span>${movieSeats}</p>
-          <p>SCREEN<span>: </span>${randomScreen}</p>
-        </div>
-        <p class="location">
-          <span>Cineflix Director's Cuts</span>
-          <span class="separator"><i class="far fa-smile"></i></span>
-          <span>Bannerghatta Road, Bengaluru</span>
-        </p>
-      </div>
-    </div>
-    <div class="right">
-      <div class="right-info-container">
-        <p class="cineflix">
-          <span>CINEFLIX CINEMAS</span><span>CINEFLIX CINEMAS</span><span>CINEFLIX CINEMAS</span><span>CINEFLIX CINEMAS</span>
-        </p>
-        <div class="show-name"><h1>IMAX 2D</h1></div>
-        <div class="time">
-          <p>Price<span>: </span>₹${moviePrice}</p>
-          <p>SCAN THE QR FOR SHOW INFO</p>
-        </div>
-        <div class="barcode">
-          <img src="https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb" alt="QR code" />
-        </div>
-        <p class="ticket-number">#${randomNo}</p>
-      </div>
-    </div>
-  `;
+// Detect New Listeners
+ticketBooking.on('newListener', (event) => {
+    console.log(`A new listener was added for the event: ${event}`);
+});
 
-  // Render canvas ticket
-  const canvas = document.getElementById('ticketCanvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = 800;
-  canvas.height = 400;
+// Movie Library
+app.get('/api/movies', (req, res) => {
+    res.json({ movies: movieLibrary });
+});
 
-  function renderTicket() {
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+// Book Ticket
+app.post('/api/book', (req, res) => {
+    const { movie, seat } = req.body;
+    if (!movie || !seat) return res.status(400).json({ error: 'Movie and seat are required' });
 
-    const img = new Image();
-    img.src = movie.image_loc ? `./MovieBanner/${movie.image_loc}` : './MovieBanner/placeholder.png';
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, 250, canvas.height);
+    ticketBooking.emit('bookTicket', movie, seat);
+    res.status(200).json({ message: `Ticket booked - ${movie} | Seat: ${seat}` });
+});
 
-      ctx.fillStyle = '#000';
-      ctx.font = '24px Poppins';
-      ctx.fillText('Cineflix Cinemas', 280, 50);
-      ctx.fillText(`#${randomNo}`, 600, 50);
-      ctx.fillText(`Movie: ${movieName}`, 280, 100);
-      ctx.fillText(`Seat: ${movieSeats}`, 280, 150);
-      ctx.fillText(`Price: ₹${moviePrice}`, 280, 200);
-      ctx.fillText(`Screen: ${randomScreen}`, 280, 250);
-      ctx.fillText(`Time: ${movieTime}`, 280, 300);
-      ctx.fillText(`Date: ${movieDay}`, 280, 350);
-    };
-  }
+app.get('/api/ticket', (req, res) => {
+    res.json({ bookedTickets });
+});
 
-  renderTicket();
+app.get('/api/listeners', (req, res) => {
+    ticketBooking.emit('showListeners', 'bookTicket');
+    res.send('Check console for listeners.');
+});
 
-  // Setup download button
-  document.getElementById('downloadButton').addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.download = 'movie_ticket.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  });
-})();
+app.use((req, res) => {
+    res.status(404).send('Page Not Found ❌');
+});
+
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

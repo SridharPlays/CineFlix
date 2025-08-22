@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add a New Movie</h2>
+
+    <form id="movieForm">
+        <label>Title:</label>
+        <input type="text" name="Title" required>
+
+        <label>Language:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Language" value="English"> English</label>
+            <label><input type="checkbox" name="Language" value="Hindi"> Hindi</label>
+            <label><input type="checkbox" name="Language" value="Tamil"> Tamil</label>
+            <label><input type="checkbox" name="Language" value="Telugu"> Telugu</label>
+            <label><input type="checkbox" name="Language" value="Malayalam"> Malayalam</label>
+        </div>
+
+        <label>Format:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Format" value="2D"> 2D</label>
+            <label><input type="checkbox" name="Format" value="3D"> 3D</label>
+            <label><input type="checkbox" name="Format" value="IMAX 3D"> IMAX 3D</label>
+            <label><input type="checkbox" name="Format" value="4DX"> 4DX</label>
+        </div>
+
+        <label>Genre:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Genre" value="Action"> Action</label>
+            <label><input type="checkbox" name="Genre" value="Adventure"> Adventure</label>
+            <label><input type="checkbox" name="Genre" value="Drama"> Drama</label>
+            <label><input type="checkbox" name="Genre" value="Sci-Fi"> Sci-Fi</label>
+            <label><input type="checkbox" name="Genre" value="Horror"> Horror</label>
+            <label><input type="checkbox" name="Genre" value="Comedy"> Comedy</label>
+        </div>
+
+        <label>Length:</label>
+        <input type="text" name="Length" required>
+
+        <label>Rating:</label>
+        <input type="number" step="0.1" name="Rating" required>
+
+        <label>Age Rating:</label>
+        <select name="AgeRating" required>
+            <option value="U">U (Universal)</option>
+            <option value="U/A">U/A (Parental Guidance)</option>
+            <option value="A">A (Adults Only)</option>
+        </select>
+
+        <label>Description:</label>
+        <textarea name="Description" required></textarea>
+
+        <label>Director:</label>
+        <input type="text" name="Director" required>
+
+        <label>Writer:</label>
+        <input type="text" name="Writer" required>
+
+        <label>Stars (comma-separated):</label>
+        <input type="text" name="Stars" required>
+
+        <label>Trailer URL:</label>
+        <input type="url" name="TrailerURL" required>
+
+        <label>Poster (Image File):</label>
+        <input type="file" name="poster" accept="image/*">
+
+        <label>Music (Audio File):</label>
+        <input type="file" name="music" accept="audio/*">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("movieForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            // Convert checkboxes to comma-separated values
+            const getCheckedValues = (name) => {
+                return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+                    .map(cb => cb.value)
+                    .join(", ");
+            };
+
+            formData.set("Language", getCheckedValues("Language"));
+            formData.set("Format", getCheckedValues("Format"));
+            formData.set("Genre", getCheckedValues("Genre"));
+
+            const response = await fetch("http://localhost:5000/api/movies", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            document.getElementById("message").innerText = result.success ? "Movie added successfully!" : "Error adding movie.";
+        });
+    </script>
+
+</body>
+</html>

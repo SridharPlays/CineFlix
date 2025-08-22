@@ -136,7 +136,7 @@ async function sendLoginFormData(Email, Password) {
 
 		const data = await response.json();
 		console.log("Response Data:", data);
-		window.location.href = 'index.html';
+		if(response.status === 200) window.location.href = 'index.html';
 	} catch (error) {
 		console.error("Error:", error);
 	}

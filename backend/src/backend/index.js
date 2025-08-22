@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Movie Routes (Handles File Uploads Inside `movies.routes.js`)
 app.use("/api/movies", movieRoutes);
 
 app.listen(PORT, () => {

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Library</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Styles/movieLibrary.css">
+</head>
+<body ng-controller="MovieController">  
+    <aside>
+        <h1>Filters</h1>
+        <div class="lang-options">
+            <div class="option" ng-repeat="lang in languages">
+                <input type="checkbox" id="{{lang}}" ng-model="selectedLanguages[lang]">
+                <label for="{{lang}}">{{lang}}</label>
+            </div>
+        </div>
+        <button id="reset" ng-click="resetFilters()">Reset Filters</button>
+    </aside>
+    
+    <section class="movies-catalogue">
+        <div class="catalogue-header">
+            <h1>Movie Catalogue</h1>
+        </div>
+        <div class="movies">
+            <div class="movie" ng-repeat="movie in movies | filter:filterByLanguages">
+                <img ng-src="../MovieBanner/{{movie.image_loc}}" alt="{{movie.title}} poster">
+                <h1>{{movie.title | uppercase}}</h1>
+                <p>{{movie.genre}}</p>
+                <p>{{movie.language}}</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        angular.module('movieApp', [])
+            .controller('MovieController', ['$scope', '$http', function($scope, $http) {
+                $scope.movies = [];
+                $scope.languages = [];
+                $scope.selectedLanguages = {};
+
+                $http.get('movies.json').then(function(response) {
+                    $scope.movies = response.data;
+                    $scope.languages = [...new Set($scope.movies.map(movie => movie.language))];
+                    $scope.languages.forEach(lang => $scope.selectedLanguages[lang] = false);
+                });
+
+                $scope.filterByLanguages = function(movie) {
+                    const selected = Object.keys($scope.selectedLanguages).filter(lang => $scope.selectedLanguages[lang]);
+                    return selected.length === 0 || selected.includes(movie.language);
+                };
+
+                $scope.resetFilters = function() {
+                    Object.keys($scope.selectedLanguages).forEach(lang => $scope.selectedLanguages[lang] = false);
+                };
+            }]);
+    </script>
+</body>
+</html>

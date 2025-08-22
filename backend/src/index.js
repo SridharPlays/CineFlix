@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 5000;
@@ -9,10 +8,6 @@ const textFilePath = "booking_logging.txt";
 
 app.use(express.json());
 app.use(cors());
-
-app.get("/", (req, res) => {
-    res.send("Hello");
-});
 
 app.post("/api/booking-info", (req, res) => {
     const { movieName, language, price } = req.body;
