@@ -429,11 +429,6 @@ const movie = movies.find(movie => movie.name.includes(movieName));
 loadMovieDetails(movie);
 
 function loadMovieDetails(movie) {
-    // if (!movie) {
-    //     console.error("Movie not found.");
-    //     return;
-    // }
-
     let length = movie.length;
     let [hours, minutes] = length.split(":").map(n => parseInt(n, 10));
     let formattedLength = `${hours}h ${minutes}m`;
@@ -465,7 +460,7 @@ function loadMovieDetails(movie) {
         </header>
         <div class="wrapper">
             <div class="image-container">
-                <img src="./MovieBanner/${movie.image_loc}" alt="${movie.Title}">
+                <img src="./MovieBanner/${movie.image_loc}" alt="${movie.name}">
             </div>
             <div class="content">
                 <p id="languageValue">Languages: ${movie.language}</p>
@@ -586,5 +581,3 @@ function setupEventListeners(movie) {
         }
     });
 }
-
-loadMovieDetails();
